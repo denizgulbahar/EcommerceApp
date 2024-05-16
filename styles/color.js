@@ -1,6 +1,6 @@
 export const color = {
-    mainColor: "#FFB534",
-    secondColor:"#FFD500",
+    mainColor: "#FF7F00",
+    secondColor:"#FFB534",
     success: "#81bb3c",
     warning: "#feab04",
     danger: "#f44336",

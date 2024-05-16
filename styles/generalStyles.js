@@ -1,5 +1,9 @@
 import { color } from "./color";
 export const generalStyles = {
+    header: {
+        fontSize: 26, 
+        fontWeight: "bold",
+    },
     shadows: {
         borderWidth: 0,
         backgroundColor: color.white,

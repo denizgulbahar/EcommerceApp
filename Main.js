@@ -3,6 +3,7 @@ import { Dimensions, StatusBar, View } from 'react-native';
 import LoginScreen from './screens/authScreens/LoginScreen';
 import ForgotPasswordScreen from './screens/authScreens/ForgotPasswordScreen';
 import ClientBottomNavigator from './navigators/ClientBottomNavigator';
+import LanguageButton from './components/buttons/languageButton';
 const Stack = createStackNavigator();
 export default function Main() {
     const width = Dimensions.get('window').width;
@@ -22,6 +23,7 @@ export default function Main() {
                                 marginRight: width / 2 - 115
                             }}
                         >
+                            <LanguageButton />
                         </View>
                     )
                 }}

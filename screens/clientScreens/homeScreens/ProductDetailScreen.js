@@ -1,11 +1,11 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-export default function MyAccountScreen () {
+export default function ProductDetailScreen () {
   return (
     <View style={styles.container}>
       <View style={styles.main}>
-        <Text style={styles.title}>MyAccountScreen</Text>
+        <Text style={styles.title}>ProductDetailScreen</Text>
       </View>
     </View>
   );

@@ -1,7 +1,5 @@
-import React, { useEffect, useState } from "react";
 import { TouchableOpacity, Text, StyleSheet, Dimensions } from "react-native";
 import { color } from "../../styles/color";
-import globalStyles from "../../styles/GlobalStyles";
 const width = Dimensions.get('window').width;
 
 const ButtonOriginal = ({ title, onPress, buttonStyle, textStyle }) => {
@@ -14,7 +12,12 @@ const ButtonOriginal = ({ title, onPress, buttonStyle, textStyle }) => {
       style={[styles.buttonContainer, buttonStyle]}
       onPress={handlePress}
     >
-      <Text style={[globalStyles(width).buttonText, textStyle]} numberOfLines={2} >{title}</Text>
+      <Text 
+        style={[styles.buttonText, textStyle]} 
+        numberOfLines={2}
+      >
+        {title}
+      </Text>
     </TouchableOpacity>
   );
 };
@@ -37,5 +40,10 @@ const styles = StyleSheet.create({
     padding: 15,
     justifyContent: "center",
     alignItems: "center",
+  },
+  buttonText: {
+    textAlign: "center",
+    fontStyle: "italic",
+    fontSize: width>=500 ? 22 : 18,
   },
 });

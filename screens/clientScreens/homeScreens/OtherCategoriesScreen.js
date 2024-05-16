@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-
+// Flex Wrap with many columns Flatlist
 export default function OtherCategoriesScreen () {
   return (
     <View style={styles.container}>

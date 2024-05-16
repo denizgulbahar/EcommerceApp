@@ -3,6 +3,8 @@ import { View, ScrollView, StyleSheet, KeyboardAvoidingView, SafeAreaView } from
 import { Platform, TouchableWithoutFeedback, Keyboard } from 'react-native'
 
 export const ScreenWrapper = ({ children }) => {
+    // KeyboardAV - When the keyboard is opened, scrolled screen content smoothly
+    // SafeAV - Prevented notches on some phones from conflicting with screen content
     return (
         <KeyboardAvoidingView
             behavior={Platform.OS === 'ios' ? 'padding' : 'height'}

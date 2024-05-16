@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
+// Used for All Specific Categories depending Data
 export default function SpecificCategoryScreen () {
   return (
     <View style={styles.container}>

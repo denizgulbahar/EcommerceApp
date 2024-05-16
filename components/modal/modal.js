@@ -19,7 +19,7 @@ const Modal = ({ visible, onClose, children }) => {
           <TouchableOpacity style={{ flex: 1 }} activeOpacity={1}
             onPress={onClose}>
             <View style={styles.overlay}>
-              <ScrollView style={styles.modal} contentContainerStyle={{ flexGrow:1 }}>
+              <ScrollView style={styles.modal} contentContainerStyle={{ flexGrow: 1 }}>
                 <TouchableOpacity style={{ flex: 1 }}  activeOpacity={1} onPress={() => {}}>
                   <IconButton
                       icon="close-circle"
@@ -40,7 +40,7 @@ const Modal = ({ visible, onClose, children }) => {
                 />
               </ScrollView>
             </View>
-        </TouchableOpacity>
+          </TouchableOpacity>
       </Portal>
     </KeyboardAvoidingView>
   );
