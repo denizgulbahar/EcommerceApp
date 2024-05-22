@@ -12,11 +12,11 @@ export const MyAccountContainer = ({accountInputs,setAccountInputs}) => {
         setAccountInputs(tempAddress);
     }
     const accountFields = [
-        { key: 'name', label:t("Name")},
-        { key: 'surname', label:t("Surname")},
-        { key: 'password', label:t("Password")},
-        { key: 'email', label:t("Email")},
-        { key: 'telNo', label:t("Telephone")},
+        { key: 'name', label:t("name")},
+        { key: 'surname', label:t("surname")},
+        { key: 'password', label:t("password")},
+        { key: 'email', label:t("email")},
+        { key: 'telNo', label:t("phoneNumber")},
       ];
     return(
         <View style={{ marginTop:20 }}>

@@ -1,21 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-import { BalanceContainer } from '../../../components/containers/BalanceContainer';
+import { View, Text, StyleSheet, Alert } from 'react-native';
 import { useUserContext } from '../../../contexts/UserContext';
 import { MyAccountContainer } from '../../../components/containers/MyAccountContainer';
-import { color } from '../../../styles/color';
-import { fetchBalance } from '../../../API/OPS/GetBalance';
 import ButtonOriginal from '../../../components/buttons/buttonOriginal';
 import { ScreenWrapper } from '../../../components/wrappers/screenWrapper';
 import { Header } from '../../../components/header/header';
-
+import { color } from '../../../styles/color';
 const PersonalInformationScreen = ({ navigation }) => {
     const [loading, setLoading] = useState(false);
     const [balance, setBalance] = useState('Yükleniyor...');
-    useEffect(() => {
-        setLoading(true)
-        fetchBalance({setLoading,setBalance,userState});
-    }, [userState])
+    // useEffect(() => {
+    //     setLoading(true)
+    //     fetchBalance({setLoading,setBalance,userState});
+    // }, [userState])
     const { userState, userDispatch } = useUserContext();
     const [accountInputs, setAccountInputs] = useState({
         name: '',
@@ -42,15 +39,14 @@ const PersonalInformationScreen = ({ navigation }) => {
         // userDispatch({ type: 'LOG_OUT' });
     };
     function handleUpdate() {
-        console.log("güncellendi.")
+        Alert.alert("güncellendi.")
     }
     function handleDelete() {
-        console.log("hesap silindi.")
+        Alert.alert("hesap silindi.")
     }
     return (
         <ScreenWrapper>
             <Header text="Kişisel Bilgilerim" />
-            <BalanceContainer balance={balance}/>
             <MyAccountContainer accountInputs={accountInputs} setAccountInputs={setAccountInputs}/>
             <View style={styles.buttonView}>
                 <ButtonOriginal 
@@ -62,7 +58,7 @@ const PersonalInformationScreen = ({ navigation }) => {
                     textStyle={{ 
                         fontSize: 17, 
                         fontStyle: "normal", 
-                        fontWeight: "bold" 
+                        fontWeight: "bold",
                     }} 
                     title="Bilgileri Güncelle" 
                     onPress={handleUpdate} 

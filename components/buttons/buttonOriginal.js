@@ -44,6 +44,7 @@ const styles = StyleSheet.create({
   buttonText: {
     textAlign: "center",
     fontStyle: "italic",
+    fontWeight: "bold",
     fontSize: width>=500 ? 22 : 18,
   },
 });

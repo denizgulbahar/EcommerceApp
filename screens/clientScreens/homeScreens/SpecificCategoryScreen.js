@@ -1,35 +1,78 @@
-import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-
-// Used for All Specific Categories depending Data
-export default function SpecificCategoryScreen () {
+import {
+  FlatList,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
+import React, { useState } from "react";
+import Tags from "../../../components/Tags";
+import ProductCard from "../../../components/ProductCard";
+import data from "../../../data/dataTrending.json";
+import InputOriginal from "../../../components/input/inputOriginal";
+import { Feather } from "@expo/vector-icons";
+import { fonts } from "../../../styles/fonts";
+import { GradientWrapper } from "../../../components/wrappers/gradientWrapper";
+const SpecificCategoryScreen = ({ navigation }) => {
+  const [products, setProducts] = useState(data.products);
+  const [search, setSearch] = useState("")
+  const handleProductDetails = (item) => {
+    navigation.navigate("details", { item });
+  };
+  const toggleFavorite = (item) => {
+    setProducts(
+      products.map((prod) => {
+        if (prod.id === item.id) {
+          console.log("prod: ", prod);
+          return {
+            ...prod,
+            isFavorite: !prod.isFavorite,
+          };
+        }
+        return prod;
+      })
+    );
+  };
   return (
-    <View style={styles.container}>
-      <View style={styles.main}>
-        <Text style={styles.title}>SpecificCategoryScreen</Text>
+    <GradientWrapper>
+      <FlatList
+        ListHeaderComponent={
+          <>
+              <View>
+                <Text style={styles.headingText}>Match Your Style</Text>
+                <InputOriginal  
+                  label="Ürün Ara"
+                  icon={() => 
+                  <Feather name="search" size={24} color="black" />
+                  }
+                  onChangeText={(v) => setSearch(v)}
+                />
+              </View>
+              <Tags />
+          </>
+        }
+        data={products}
+        numColumns={2}
+        renderItem={({ item }) => (
+          <ProductCard
+            item={item}
+            handleProductClick={handleProductDetails}
+            toggleFavorite={toggleFavorite}
+          />
+        )}
+        showsVerticalScrollIndicator={false}
+      />
+      <View>
       </View>
-    </View>
+    </GradientWrapper>
   );
-}
+};
+
+export default SpecificCategoryScreen;
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    padding: 24,
-  },
-  main: {
-    flex: 1,
-    justifyContent: 'center',
-    maxWidth: 960,
-    margin: 'auto',
-  },
-  title: {
-    fontSize: 64,
-    fontWeight: 'bold',
-  },
-  subtitle: {
-    fontSize: 36,
-    color: '#38434D',
+  headingText: {
+    fontSize: 28,
+    marginVertical: 20,
+    fontFamily: fonts.italic
   },
 });

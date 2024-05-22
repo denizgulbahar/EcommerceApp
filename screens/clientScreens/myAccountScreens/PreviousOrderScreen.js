@@ -2,40 +2,39 @@ import React from 'react';
 import { View, Text, FlatList } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { PreviousOrderContainer } from '../../../components/containers/PreviousOrderContainer';
-import { BalanceContainer } from '../../../components/containers/BalanceContainer';
 import { ScreenWrapper } from '../../../components/wrappers/screenWrapper';
 const PreviousOrderScreen = () => {
     const {t} = useTranslation()
     const previousOrdersData = [
       {
-          "id": "21321321",
-          "SiparisTarihi": "15.03.2024",
-          "SiparisUrunu": "Led Lamp",
-          "OdemeToplam": "240 TL",
-          "TeslimatAdresi": "123 Main St, Apartment 4B, Istanbul, Turkey",
-          "TeslimatAdSoyad": "John Doe",
-          "TeslimatTel": "+553 457 0123",
-          "OdemeTipi": "3 Taksitli"
+          "orderNumber": "21321321",
+          "orderDate": "15.03.2024",
+          "orderProduct": "Led Lamp",
+          "ÖdemeMiktarı": "240 TL",
+          "teslimatAdresi": "Kocatepe Mahallesi, Atatürk Bulvarı, No: 789, Kat 3, Daire 10, Çankaya, Ankara, Türkiye",
+          "teslimatAdSoyad": "Uğur Yıldırım",
+          "teslimatTel": "+553 457 0123",
+          "odemeTipi": "3 Taksitli"
       },
       {
-          "id": "21321322",
-          "SiparisTarihi": "16.03.2024",
-          "SiparisUrunu": "Wireless Mouse",
-          "OdemeToplam": "150 TL",
-          "TeslimatAdresi": "456 Elm St, Office 12, Ankara, Turkey",
-          "TeslimatAdSoyad": "Berk",
-          "TeslimatTel": "+553 458 4567",
-          "OdemeTipi": "Tek Çekim"
+          "orderNumber": "21321322",
+          "orderDate": "16.03.2024",
+          "orderProduct": "Wireless Mouse",
+          "ÖdemeMiktarı": "150 TL",
+          "teslimatAdresi": "Güzelyalı Mahallesi, İnönü Caddesi, No: 456, Kat 2, Daire 7, Konak, İzmir, Türkiye",
+          "teslimatAdSoyad": "Berk Çevrim",
+          "teslimatTel": "+553 458 4567",
+          "odemeTipi": "Tek Çekim"
       },
       {
-          "id": "21321323",
-          "SiparisTarihi": "17.03.2024",
-          "SiparisUrunu": "Bluetooth Speaker",
-          "OdemeToplam": "320 TL",
-          "TeslimatAdresi": "789 Pine St, House 22, Izmir, Turkey",
-          "TeslimatAdSoyad": "Alice Johnson",
-          "TeslimatTel": "+553 459 7890",
-          "OdemeTipi": "6 Taksitli"
+          "orderNumber": "21321323",
+          "orderDate": "17.03.2024",
+          "orderProduct": "Bluetooth Speaker",
+          "ÖdemeMiktarı": "320 TL",
+          "teslimatAdresi": "Cumhuriyet Mahallesi, Atatürk Caddesi, No: 123, Daire 4B, Şişli, İstanbul, Türkiye",
+          "teslimatAdSoyad": "Aleyna Erdinç",
+          "teslimatTel": "+553 459 7890",
+          "odemeTipi": "6 Taksitli"
       }
   ]
 
@@ -44,7 +43,6 @@ const PreviousOrderScreen = () => {
      );
     return (
         <ScreenWrapper>
-            <BalanceContainer balance={1000} />
             <FlatList
                 data={previousOrdersData}
                 renderItem={renderItem}

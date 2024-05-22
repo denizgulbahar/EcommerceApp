@@ -1,7 +1,7 @@
 import { StyleSheet, SafeAreaView } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { FontAwesome } from '@expo/vector-icons';
-import { color } from '../../styles/color';
+import { color } from '../styles/color'
 import HomeTopNavigator from './HomeTopNavigator';
 import FavouriteScreen from '../screens/clientScreens/FavouriteScreen';
 import ShoppingBasketScreen from '../screens/clientScreens/ShoppingBasketScreen';

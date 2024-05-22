@@ -3,10 +3,8 @@ import { View, Text, StyleSheet, Dimensions, Image } from 'react-native';
 import { useUserContext } from '../../contexts/UserContext';
 import LoadingComponent from '../../components/LoadingComponent';
 import { color } from '../../styles/color';
-import loginHandler from '../../API/AUTH/login';
 import ButtonOriginal from '../../components/buttons/buttonOriginal';
 import InputOriginal from '../../components/input/inputOriginal';
-import { Seperator } from '../../components/seperator/seperator';
 import { Header } from '../../components/header/header';
 import { ScreenWrapper } from '../../components/wrappers/screenWrapper';
 
@@ -14,18 +12,18 @@ const LoginScreen = ({ navigation }) => {
     const width = Dimensions.get('window').width;
     const { userState, userDispatch } = useUserContext();
     const [isLoading, setIsLoading] = useState(false);
-    const [username, setUsername] = useState("ecommerce@commerce.com");
+    const [username, setUsername] = useState("ecommerce@gmail.com");
     const [password, setPassword] = useState('password');
     const handleLogin = async () => {
         // Perform login logic here
-        setIsLoading(true);
-        const loginResponse = await loginHandler({ user: username, password: password });
-        console.log(loginResponse)
-        const user = { ...loginResponse };
-        if (user.token) {
-            setIsLoading(false);
-            userDispatch({ type: 'LOG_IN', payload: user });
-        }
+        // setIsLoading(true);
+        // const loginResponse = await loginHandler({ user: username, password: password });
+        // console.log(loginResponse)
+        // const user = { ...loginResponse };
+        // if (user.token) {
+        //     setIsLoading(false);
+        //     userDispatch({ type: 'LOG_IN', payload: user });
+        // }
         navigation.navigate("client")
     };
     const handleForgotPassword = () => {
@@ -38,24 +36,23 @@ const LoginScreen = ({ navigation }) => {
           <ScreenWrapper>
               <Image
                   source={require('../../assets/logo/logo.png')}
-                  style={[styles.logo,{backgroundColor:color.black}]}
+                  style={[styles.logo]}
                   resizeMode="contain"
               />      
               <Header text="Welcome to Ecommerce APP" />
               <InputOriginal
                   icon="email"
                   rightIcon="checkbox-marked-circle"
-                  kind="login"
                   label="Email"
                   value={username}
                   onChangeText={setUsername}
               />
               <InputOriginal
                   icon="email"
-                  rightIcon="eye"
-                  kind="login"
                   label="Şifre"
+                  kind="password"
                   keyboard="password"
+                  secureText="true"
                   value={password}
                   onChangeText={setPassword}
               />
@@ -80,9 +77,11 @@ const LoginScreen = ({ navigation }) => {
 
 const styles = StyleSheet.create({
     logo: {
-        height: 220,
-        width: 310,
+        opacity: 0.8,
+        height: 160,
+        width: 320,
         marginBottom: 30,
+        alignSelf: "center",
     },
     singleButtonView: {
         flexDirection: "row",

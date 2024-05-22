@@ -21,8 +21,8 @@ const ForgotPasswordScreen = ({ navigation }) => {
     return (
         <View style={styles.container}>
             <View style={{ height:400}}>
-                <View style={{ alignSelf:"flex-start" }}>
-                    <Header text="SifreniDegistir" />
+                <View style={{ alignSelf: "flex-start", marginBottom: 30 }}>
+                    <Header text="Şifreni Değiştir" />
                 </View>
                 <InputOriginal 
                     label={t("password")}
@@ -37,14 +37,13 @@ const ForgotPasswordScreen = ({ navigation }) => {
                     onChangeText={setConfirmPassword} 
                 />
                 <ButtonOriginal 
-                    buttonStyle={{ marginTop: 20 }} 
-                    title={t("Reset Password")} 
-                    kind="signUp2" 
+                    buttonStyle={{ marginHorizontal:5, marginTop: 20 }} 
+                    title={t("ResetPassword")} 
                     onPress={handleResetPassword} 
                 />
                 <ButtonOriginal 
                     buttonStyle={{ marginTop: 20, width: 200, alignSelf: "center" }} 
-                    title={t("AnaEkranaDon")} 
+                    title={t("Ana Ekrana Dön")} 
                     onPress={ () => navigation.navigate("login")} 
                 />
             </View>
@@ -55,9 +54,9 @@ const ForgotPasswordScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        paddingVertical: 10,
+        paddingVertical: 50,
         paddingHorizontal: 20,
-        justifyContent: 'center',
+        justifyContent: 'flex-start',
         backgroundColor:color.mainColor,
     },
 });

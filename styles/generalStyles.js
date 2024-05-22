@@ -4,6 +4,11 @@ export const generalStyles = {
         fontSize: 26, 
         fontWeight: "bold",
     },
+    rowContainer: {
+        flex: 1,
+        flexDirection: "row",
+        justifyContent: "space-between",
+    },
     shadows: {
         borderWidth: 0,
         backgroundColor: color.white,

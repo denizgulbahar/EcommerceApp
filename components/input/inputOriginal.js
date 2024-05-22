@@ -1,8 +1,27 @@
 import { TextInput } from 'react-native-paper';
 import { StyleSheet } from 'react-native';
 import { color } from '../../styles/color';
-
+import { useEffect, useState } from 'react';
 const InputOriginal = (props) => {
+  const [secureTextEntry, setSecureTextEntry] = useState(false);
+  
+  const toggleSecureEntry = () => {
+    setSecureTextEntry(!secureTextEntry);
+  };
+
+  useEffect(() => {
+    setSecureTextEntry(props.secureTextEntry);
+  },[])
+
+  let rightIcon;
+
+  if(props.rightIcon) {
+    rightIcon = props.rightIcon;
+  } 
+
+  if(props.kind === 'password') {
+    rightIcon = secureTextEntry ? 'eye' : 'eye-off'
+  } 
   return (
     <TextInput
         label={props.label}
@@ -17,26 +36,23 @@ const InputOriginal = (props) => {
             color={color.mainColor} 
             style={{ top: 13, left: 5 }} 
           /> 
-          :
-          false
+          : false
         }
-        right={props.rightIcon ? 
+        right={
           <TextInput.Icon 
-            icon={props.rightIcon} 
+            icon={rightIcon} 
+            onPress={props.kind==="password" ? toggleSecureEntry : null} 
             color={color.mainColor} 
             style={{ top: 12, left: 5 }} 
-          /> 
-          : 
-          false
+          />   
         }
         editable={props.editable}
         mode="outlined"
         underlineColor="transparent"
-        secureTextEntry={props.secureText}
+        secureTextEntry={secureTextEntry}
         multiline={props.multiline}
         placeholder={props.placeholder}
         keyboardType={props.keyboardType}
-        defaultValue={props.defaultValue}
         numberOfLines={props.numberOfLines}
       />
     
