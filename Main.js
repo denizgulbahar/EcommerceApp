@@ -9,6 +9,7 @@ import PreviousOrderScreen from './screens/clientScreens/myAccountScreens/Previo
 import SpecificCategoryScreen from './screens/clientScreens/homeScreens/SpecificCategoryScreen';
 import ProductDetailScreen from './screens/clientScreens/homeScreens/ProductDetailScreen';
 import ShoppingCartScreen from './screens/clientScreens/ShoppingCartScreen';
+import OtherCategoriesScreen from './screens/clientScreens/homeScreens/OtherCategoriesScreen';
 const Stack = createStackNavigator();
 export default function Main() {
     const width = Dimensions.get('window').width;
@@ -64,6 +65,10 @@ export default function Main() {
                 <Stack.Screen
                     name="cart"
                     component={ShoppingCartScreen}
+                /> 
+                <Stack.Screen
+                    name="other-categories"
+                    component={OtherCategoriesScreen}
                 /> 
                 {/* <Stack.Screen
                     name="client"

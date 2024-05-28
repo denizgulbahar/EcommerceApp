@@ -1,6 +1,7 @@
 export const color = {
     mainColor: "#FF7F00",
     secondColor: "#FFB534",
+    deepBlueColor: "#007FFF",
     success: "#81bb3c",
     warning: "#feab04",
     danger: "#f44336",
@@ -9,7 +10,7 @@ export const color = {
     black: "#000",
     darkGrey: "#4B4B4B",
     softGreen: "#9ED2BE",
-    softRed: "#E55B5B",
-    strongRed: "#E72929",
+    cottonCandyRed: "#E55B5B",
+    roseRed: "#E72929",
     
 }

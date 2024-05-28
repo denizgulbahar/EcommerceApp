@@ -1,12 +1,11 @@
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React, { useContext, useState } from "react";
-import { useNavigation, useRoute } from "@react-navigation/native";
+import { useRoute } from "@react-navigation/native";
 import { addToCart } from "../../../utilities/helper"
 import { CartContext } from "../../../contexts/CartContext"
 import ButtonOriginal from "../../../components/buttons/buttonOriginal";
 import { fonts } from "../../../styles/fonts";
 import { color } from "../../../styles/color";
-import { GradientWrapper } from "../../../components/wrappers/gradientWrapper";
 import { ScreenWrapper } from "../../../components/wrappers/screenWrapper";
 import { generalStyles } from "../../../styles/generalStyles";
 const colorsArray = [
@@ -17,28 +16,28 @@ const colorsArray = [
   color.success
 ];
 
-const ProductDetailScreen = () => {
+const ProductDetailScreen = ({ navigation }) => {
   const value = useContext(CartContext);
   const route = useRoute();
-  const navigation = useNavigation();
   const product = route.params.item;
   const [selectedSize, setSelectedSize] = useState("M");
   const [selectedColor, setSelectedColor] = useState("#B11D1D");
-  const imageUrl =
-    "https://res.cloudinary.com/dlc5c1ycl/image/upload/v1710567613/vulb5bckiruhpzt2v8ec.png";
-
-  const handleAddToCart = () => {
-    product.color = selectedColor;
-    product.size = selectedSize;
-    value.addToCartItem(product);
-    navigation.navigate("cart")
+  const handleAddToCart = async() => {
+    try{
+      product.color = selectedColor;
+      product.size = selectedSize;
+      await value.addToCartItem(product);
+    }catch(e) {
+      console.error("Product adding error")
+    } finally{
+      navigation.navigate("cart")
+    }
   };
   // Cloths Sizes
   const sizes = ["S", "M", "L", "XL"];
 
   return (
     <ScreenWrapper>
-      <GradientWrapper>
         <View style={styles.imageContainer}>
           <Image source={{ uri: product.image }} style={styles.coverImage} />
         </View>
@@ -93,7 +92,6 @@ const ProductDetailScreen = () => {
             onPress={handleAddToCart}
           />
         </View>
-      </GradientWrapper>
     </ScreenWrapper>
    
   );
@@ -115,6 +113,7 @@ const styles = StyleSheet.create({
   coverImage: {
     resizeMode: "cover",
     flex: 1,
+    borderRadius: 10,
   },
   contentContainer: {
     padding: 20,
@@ -144,7 +143,7 @@ const styles = StyleSheet.create({
     fontFamily: fonts.regular,
   },
   selectedText: {
-    color: color.softRed,
+    color: color.cottonCandyRed,
   },
   borderColorCircle: {
     height: 50,
@@ -157,7 +156,7 @@ const styles = StyleSheet.create({
     borderRadius: 18,
   },
   button: {
-    backgroundColor: color.softRed,
+    backgroundColor: color.cottonCandyRed,
     height: 62,
     alignItems: "center",
     justifyContent: "center",

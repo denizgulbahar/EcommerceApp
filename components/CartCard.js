@@ -1,10 +1,13 @@
-import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Image, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { fonts } from "../styles/fonts";
+import { IconButton } from "react-native-paper";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { color } from "../styles/color";
+import { generalStyles } from "../styles/generalStyles";
 
 const CartCard = ({ item, handleDelete }) => {
-  const imageUrl =
-    "https://res.cloudinary.com/dlc5c1ycl/image/upload/v1710567613/cwlk21f74nd9iamrlzkh.png";
+  console.log(item)
   return (
     <View style={styles.card}>
       <Image source={{ uri: item.image }} style={styles.image} />
@@ -13,19 +16,28 @@ const CartCard = ({ item, handleDelete }) => {
         <Text style={styles.price}>${item.price}</Text>
         <View style={styles.textCircleContainer}>
           <View
-            style={[styles.circle, { backgroundColor: item?.color || "red" }]}
-          ></View>
+            style={[
+              styles.circle, { backgroundColor: item.color ? item.color :  "red" }
+            ]}
+          />
           <View style={styles.sizeContainer}>
             <Text style={styles.sizeText}>{item.size}</Text>
           </View>
         </View>
       </View>
-      <TouchableOpacity onPress={() => handleDelete(item.id)}>
-        <Image
-          source={require("../assets/deleteIcon.png")}
-          style={styles.deleteIcon}
-        />
-      </TouchableOpacity>
+      <IconButton 
+        style={[
+          { width: 60, height: 60, alignSelf: "center" }
+        ]}
+        icon={({ }) => (
+          <MaterialCommunityIcons
+            name="trash-can-outline"
+            color={color.danger}
+            size={40}
+          />
+        )}
+        onPress={() => handleDelete(item.id)}
+      />
     </View>
   );
 };
@@ -34,14 +46,19 @@ export default CartCard;
 
 const styles = StyleSheet.create({
   card: {
+    flex: 1,
+    borderRadius: 10,
+    backgroundColor: "#66B3FF",
     flexDirection: "row",
-    marginVertical: 15,
+    marginBottom: 15,
+    marginHorizontal: 5,
+    padding: 12,
   },
   image: {
-    height: 125,
-    width: "30%",
-    resizeMode: "contain",
-    borderRadius: 20,
+    height: 150,
+    width: 120,
+    resizeMode: "cover",
+    borderRadius: 10,
   },
   title: {
     fontSize: 18,
@@ -58,7 +75,13 @@ const styles = StyleSheet.create({
   },
   content: {
     flex: 1,
-    padding: 5,
+    borderWidth: 1,
+    borderColor: color.white,
+    justifyContent: "center",
+    alignItems: "flex-start",
+    padding: 10,
+    margin: 10,
+    borderRadius: 10
   },
   circle: {
     height: 32,
@@ -66,13 +89,13 @@ const styles = StyleSheet.create({
     borderRadius: 16,
   },
   sizeContainer: {
-    backgroundColor: "#FFFFFF",
+    backgroundColor: color.white,
     height: 32,
     width: 32,
     borderRadius: 16,
     justifyContent: "center",
     alignItems: "center",
-    marginHorizontal: 20,
+    marginHorizontal: 15,
   },
   sizeText: {
     fontSize: 18,
@@ -81,10 +104,6 @@ const styles = StyleSheet.create({
   },
   textCircleContainer: {
     flexDirection: "row",
-  },
-  deleteIcon: {
-    height: 30,
-    width: 30,
-    marginTop: 10,
+    marginVertical: 5,
   },
 });

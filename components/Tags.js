@@ -7,10 +7,22 @@ import {
 } from "react-native";
 import React, { useState } from "react";
 import { fonts } from "../styles/fonts";
-
-const Tags = () => {
+import dataMen from "../data/dataMen.json"
+import dataWomen from "../data/dataWomen.json"
+import dataTrending from "../data/dataTrending.json"
+import dataNew from "../data/dataNew.json"
+const Tags = ({ setProducts }) => {
   const [selected, setSelected] = useState("Trending Now");
-  const tags = ["Trending Now", "All", "New", "Fashion", "Mens"];
+  const tags = [
+    { title: "Trending Now", data: dataTrending.products },
+    { title: "New", data: dataNew.products },
+    { title: "Women", data: dataWomen.products },
+    { title: "Men", data: dataMen.products }
+  ]
+  function changeTag (item) {
+    setSelected(item.title)
+    setProducts(item.data)
+  }
   return (
     <View style={styles.container}>
       <FlatList
@@ -19,14 +31,14 @@ const Tags = () => {
         showsHorizontalScrollIndicator={false}
         renderItem={({ item }) => {
           return (
-            <TouchableOpacity onPress={() => setSelected(item)}>
+            <TouchableOpacity onPress={() => changeTag(item)}>
               <Text
                 style={[
                   styles.tagText,
-                  item == selected ? styles.isSelected : null,
+                  item.title == selected ? styles.isSelected : null,
                 ]}
               >
-                {item}
+                {item.title}
               </Text>
             </TouchableOpacity>
           );

@@ -11,7 +11,7 @@ import data from "../../../data/dataTrending.json";
 import InputOriginal from "../../../components/input/inputOriginal";
 import { Feather } from "@expo/vector-icons";
 import { fonts } from "../../../styles/fonts";
-import { GradientWrapper } from "../../../components/wrappers/gradientWrapper";
+import { ScreenWrapper } from "../../../components/wrappers/screenWrapper";
 const SpecificCategoryScreen = ({ navigation }) => {
   const [products, setProducts] = useState(data.products);
   const [search, setSearch] = useState("")
@@ -22,7 +22,6 @@ const SpecificCategoryScreen = ({ navigation }) => {
     setProducts(
       products.map((prod) => {
         if (prod.id === item.id) {
-          console.log("prod: ", prod);
           return {
             ...prod,
             isFavorite: !prod.isFavorite,
@@ -33,7 +32,7 @@ const SpecificCategoryScreen = ({ navigation }) => {
     );
   };
   return (
-    <GradientWrapper>
+    <ScreenWrapper type="flatlist">
       <FlatList
         ListHeaderComponent={
           <>
@@ -47,7 +46,7 @@ const SpecificCategoryScreen = ({ navigation }) => {
                   onChangeText={(v) => setSearch(v)}
                 />
               </View>
-              <Tags />
+              <Tags setProducts={setProducts} />
           </>
         }
         data={products}
@@ -61,9 +60,7 @@ const SpecificCategoryScreen = ({ navigation }) => {
         )}
         showsVerticalScrollIndicator={false}
       />
-      <View>
-      </View>
-    </GradientWrapper>
+    </ScreenWrapper>
   );
 };
 

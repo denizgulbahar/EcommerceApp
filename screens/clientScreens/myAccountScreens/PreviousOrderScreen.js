@@ -42,7 +42,7 @@ const PreviousOrderScreen = () => {
         <PreviousOrderContainer key={index} values={item} />
      );
     return (
-        <ScreenWrapper>
+        <ScreenWrapper type="flatlist">
             <FlatList
                 data={previousOrdersData}
                 renderItem={renderItem}
