@@ -20,6 +20,7 @@ const ProductDetailScreen = ({ navigation }) => {
   const value = useContext(CartContext);
   const route = useRoute();
   const product = route.params.item;
+  console.log("pro",product)
   const [selectedSize, setSelectedSize] = useState("M");
   const [selectedColor, setSelectedColor] = useState("#B11D1D");
   const handleAddToCart = async() => {

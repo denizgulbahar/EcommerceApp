@@ -1,11 +1,11 @@
 import { StyleSheet, SafeAreaView } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { FontAwesome } from '@expo/vector-icons';
-import { color } from '../styles/color'
-import HomeTopNavigator from './HomeTopNavigator';
-import FavouriteScreen from '../screens/clientScreens/FavouriteScreen';
-import ShoppingBasketScreen from '../screens/clientScreens/ShoppingBasketScreen';
-import MyAccountScreen from '../screens/clientScreens/MyAccountScreen';
+import { color } from '../../styles/color'
+import HomeTopNavigator from './homeTopNavigator/HomeTopNavigator';
+import FavouriteScreen from '../../screens/clientScreens/FavouriteScreen';
+import ShoppingBasketScreen from '../../screens/clientScreens/ShoppingCartScreen';
+import MyAccountScreen from '../../screens/clientScreens/myAccountScreens/MyAccountScreen';
 
 const Tab = createBottomTabNavigator();
 const ClientBottomNavigator = () => {

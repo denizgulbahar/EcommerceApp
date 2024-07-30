@@ -4,10 +4,8 @@ import { fonts } from "../styles/fonts";
 import { IconButton } from "react-native-paper";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { color } from "../styles/color";
-import { generalStyles } from "../styles/generalStyles";
 
-const CartCard = ({ item, handleDelete }) => {
-  console.log(item)
+const CartCard = ({ item, onPress, favourite }) => {
   return (
     <View style={styles.card}>
       <Image source={{ uri: item.image }} style={styles.image} />
@@ -26,17 +24,16 @@ const CartCard = ({ item, handleDelete }) => {
         </View>
       </View>
       <IconButton 
-        style={[
-          { width: 60, height: 60, alignSelf: "center" }
-        ]}
+        style={styles.icon}
+        onPress={favourite ? onPress : () => onPress(item.id)}
         icon={({ }) => (
           <MaterialCommunityIcons
-            name="trash-can-outline"
-            color={color.danger}
+            name={favourite ? "plus-circle": "trash-can-outline"}
+            color={favourite ? color.white : color.danger}
             size={40}
           />
         )}
-        onPress={() => handleDelete(item.id)}
+        
       />
     </View>
   );
@@ -45,13 +42,16 @@ const CartCard = ({ item, handleDelete }) => {
 export default CartCard;
 
 const styles = StyleSheet.create({
+  icon: { 
+    width: 60, 
+    height: 60, 
+    alignSelf: "center" 
+  },
   card: {
     flex: 1,
-    borderRadius: 10,
     backgroundColor: "#66B3FF",
     flexDirection: "row",
     marginBottom: 15,
-    marginHorizontal: 5,
     padding: 12,
   },
   image: {

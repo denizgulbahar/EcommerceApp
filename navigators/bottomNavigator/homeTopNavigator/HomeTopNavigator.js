@@ -1,8 +1,8 @@
 import { View, Text, Dimensions, SafeAreaView } from 'react-native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import { color } from '../../styles/color';
+import { color } from '../../../styles/color';
 import OtherCategoriesStack from './OtherCategoriesStack';
-import SpecificCategoryScreen from '../screens/clientScreens/homeScreens/SpecificCategoryScreen';
+import SpecificCategoryScreen from '../../../screens/clientScreens/homeScreens/SpecificCategoryScreen';
 const width = Dimensions.get('window').width;
 const Tab = createMaterialTopTabNavigator()
 const HomeTopNavigator = ({ route }) => {

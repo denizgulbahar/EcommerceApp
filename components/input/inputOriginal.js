@@ -25,23 +25,21 @@ const InputOriginal = (props) => {
   return (
     <TextInput
         label={props.label}
-        style={[ 
-          styles.input, props.inputStyle,
-        ]}
+        style={[ styles.input, props.inputStyle ]}
         value={props.value}
         onChangeText={props.onChangeText}
-        left={!props.noIcon ? 
+        left={!props.noIcon && (
           <TextInput.Icon 
             icon={props.icon ? props.icon : "email"} 
             color={color.mainColor} 
             style={{ top: 13, left: 5 }} 
           /> 
-          : false
+          )
         }
         right={
           <TextInput.Icon 
             icon={rightIcon} 
-            onPress={props.kind==="password" ? toggleSecureEntry : null} 
+            onPress={props.kind==="password" && toggleSecureEntry} 
             color={color.mainColor} 
             style={{ top: 12, left: 5 }} 
           />   

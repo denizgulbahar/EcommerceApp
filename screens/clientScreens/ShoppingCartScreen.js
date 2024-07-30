@@ -37,13 +37,14 @@ useEffect(() => {
     { title: 'Kargo:', value: cargoPrice },
     { title: 'Genel Toplam:', value: handlePrecision(totalPrice, cargoPrice) },
   ];
+  console.log("data: ", cartItems)
   return (
     <ScreenWrapper>
         <FlatList
           style={styles.outerContainer}
           data={cartItems}
           renderItem={({ item }) => (
-            <CartCard item={item} handleDelete={handleDeleteItem} />
+            <CartCard item={item} onPress={handleDeleteItem} />
           )}
           ListFooterComponent={
             <>

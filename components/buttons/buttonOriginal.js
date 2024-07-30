@@ -1,35 +1,40 @@
-import { TouchableOpacity, Text, StyleSheet, Dimensions } from "react-native";
+import { 
+  TouchableOpacity, 
+  Text, 
+  StyleSheet, 
+  Dimensions 
+} from "react-native";
 import { color } from "../../styles/color";
+
 const width = Dimensions.get('window').width;
 
-const ButtonOriginal = ({ title, onPress, buttonStyle, textStyle }) => {
-  function handlePress() {
-    onPress();
-  }
+const ButtonOriginal = ({ children, title, onPress, buttonStyle, textStyle }) => {
+  
   return (
     <TouchableOpacity
       activeOpacity={0.8}
-      style={[styles.buttonContainer, buttonStyle]}
-      onPress={handlePress}
+      style={[styles.button, buttonStyle]}
+      onPress={onPress}
     >
-      <Text 
-        style={[styles.buttonText, textStyle]} 
-        numberOfLines={2}
-      >
-        {title}
-      </Text>
+      {/* Conditionally render Children component or Text component */}
+      {children ? (
+        children
+      ) : (
+        <Text style={[styles.buttonText, textStyle]}>
+          {title}
+        </Text>
+      )}
     </TouchableOpacity>
   );
 };
 
 export default ButtonOriginal;
 const styles = StyleSheet.create({
-  buttonContainer: {
+  button: {
     height: 50,
     borderWidth: 0,
     backgroundColor: color.white,
-    borderColor: color.mainColor,
-    shadowColor: "#000000",
+    shadowColor: color.black,
     shadowOffset: {
         width: 0,
         height: 0,
@@ -43,8 +48,7 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     textAlign: "center",
+    fontSize: width > 500 ? 22 : 18,
     fontStyle: "italic",
-    fontWeight: "bold",
-    fontSize: width>=500 ? 22 : 18,
-  },
+  }
 });

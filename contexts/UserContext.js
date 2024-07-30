@@ -1,4 +1,4 @@
-import React, { useEffect, createContext, useContext, useReducer } from 'react';
+import React, { createContext, useContext, useReducer } from 'react';
 
 // Initial state of the user context
 const initialState = {
