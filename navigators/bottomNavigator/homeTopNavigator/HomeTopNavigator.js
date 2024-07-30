@@ -64,11 +64,11 @@ const HomeTopNavigator = ({ route }) => {
                     options={{ tabBarLabel: 'Kadın' }}
                     component={SpecificCategoryScreen}
                 />
-                <Tab.Screen
+                {/* <Tab.Screen
                     name="categories"
                     options={{ tabBarLabel: 'Diğer' }}
                     component={OtherCategoriesStack}
-                />
+                /> */}
             </Tab.Navigator>
         </SafeAreaView>
     );

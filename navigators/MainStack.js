@@ -11,6 +11,8 @@ import ProductDetailScreen from '../screens/clientScreens/homeScreens/ProductDet
 import ShoppingCartScreen from '../screens/clientScreens/ShoppingCartScreen';
 import OtherCategoriesScreen from '../screens/clientScreens/homeScreens/OtherCategoriesScreen';
 import FavouriteScreen from '../screens/clientScreens/FavouriteScreen';
+import { useUserContext } from '../contexts/UserContext';
+import ClientBottomNavigator from './bottomNavigator/ClientBottomNavigator';
 
 const Stack = createStackNavigator();
 export default function MainStack() {
@@ -52,6 +54,10 @@ export default function MainStack() {
                 {(userState.isLoggedIn) && (
                 <>
                     <Stack.Screen
+                        name="client"
+                        component={ClientBottomNavigator}
+                    />
+                    <Stack.Screen
                         name="my-account"
                         component={MyAccountScreen}
                     />
@@ -83,10 +89,6 @@ export default function MainStack() {
                         name="favourites"
                         component={FavouriteScreen}
                     /> 
-                    <Stack.Screen
-                        name="client"
-                        component={ClientBottomNavigator}
-                    />
                 </>
                 )}
             </Stack.Navigator >

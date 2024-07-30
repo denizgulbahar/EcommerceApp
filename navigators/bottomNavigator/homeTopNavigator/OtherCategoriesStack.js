@@ -5,7 +5,7 @@ const OtherCategoriesStack = () => {
     return (
         <Stack.Navigator 
           initialRouteName="main"  
-          screenOptions={() => ({
+          screenOptions={({route}) => ({
             headerShown:false
           })}
         >

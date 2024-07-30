@@ -13,6 +13,7 @@ import { Feather } from "@expo/vector-icons";
 import { fonts } from "../../../styles/fonts";
 import { ScreenWrapper } from "../../../components/wrappers/screenWrapper";
 const SpecificCategoryScreen = ({ navigation }) => {
+  
   const [products, setProducts] = useState(data.products);
   const [search, setSearch] = useState("")
   const handleProductDetails = (item) => {
@@ -37,7 +38,6 @@ const SpecificCategoryScreen = ({ navigation }) => {
         ListHeaderComponent={
           <>
               <View>
-                <Text style={styles.headingText}>Match Your Style</Text>
                 <InputOriginal  
                   label="Ürün Ara"
                   icon={() => 

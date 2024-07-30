@@ -6,19 +6,21 @@ import ButtonOriginal from '../../components/buttons/buttonOriginal';
 import InputOriginal from '../../components/input/inputOriginal';
 import { Header } from '../../components/header/header';
 import { ScreenWrapper } from '../../components/wrappers/screenWrapper';
+import loginHandler from '../../API/auth/loginAPI';
 
 const LoginScreen = ({ navigation }) => {
     const { userDispatch } = useUserContext();
     const [isLoading, setIsLoading] = useState(false);
-    const [username, setUsername] = useState("deniz.gulbahar@gmail.com");
+    const [email, setEmail] = useState("deniz.gulbahar@gmail.com");
     const [password, setPassword] = useState('Ecommerce123');
 
-    const isCredentialsValid = (username, password) => {
-        return username === "deniz.gulbahar@gmail.com" && password === "Ecommerce123";
+    const isCredentialsValid = (email, password) => {
+        return email === "deniz.gulbahar@gmail.com" && password === "Ecommerce123";
     };
     
     const handleLoginResponse = (response) => {
         const user = { ...response };
+        console.log("user",response)
         if (user.data.token) {
             userDispatch({ type: 'LOG_IN', payload: user });
             navigation.navigate('client');
@@ -27,11 +29,13 @@ const LoginScreen = ({ navigation }) => {
         }
     };
     const handleLogin = async () => {
-        if (isCredentialsValid(username, password)) {
+        const data = { email: email, password: password }
+        if (isCredentialsValid(email, password)) {
             setIsLoading(true);
             try {
-                const loginResponse = await loginHandler({ user: username, password });
-                handleLoginResponse(loginResponse);
+                const loginResponse = await loginHandler(data);
+                console.log("resp",loginResponse)
+               handleLoginResponse(loginResponse);
             } catch (error) {
                 console.error('Login başarısız, API isteği başarısız', error);
                 Alert.alert('Login başarısız. Lütfen tekrar deneyin.');
@@ -62,8 +66,8 @@ const LoginScreen = ({ navigation }) => {
                         icon="email"
                         rightIcon="checkbox-marked-circle"
                         label="Email"
-                        value={username}
-                        onChangeText={setUsername}
+                        value={email}
+                        onChangeText={setEmail}
                     />
                     <InputOriginal
                         icon="email"
