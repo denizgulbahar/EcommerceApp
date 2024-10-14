@@ -23,6 +23,7 @@ const ProductDetailScreen = ({ navigation }) => {
   console.log("pro",product)
   const [selectedSize, setSelectedSize] = useState("M");
   const [selectedColor, setSelectedColor] = useState("#B11D1D");
+  
   const handleAddToCart = async() => {
     try{
       product.color = selectedColor;
