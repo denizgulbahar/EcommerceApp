@@ -14,7 +14,7 @@ const LoginScreen = ({ navigation }) => {
     const [email, setEmail] = useState("deniz.gulbahar@gmail.com");
     const [password, setPassword] = useState('Ecommerce123');
 
-    const isCredentialsValid = (email, password) => {
+    const mockCredentialsValid = (email, password) => {
         return email === "deniz.gulbahar@gmail.com" && password === "Ecommerce123";
     };
     
@@ -30,7 +30,7 @@ const LoginScreen = ({ navigation }) => {
     };
     const handleLogin = async () => {
         const data = { email: email, password: password }
-        if (isCredentialsValid(email, password)) {
+        if (mockCredentialsValid(email, password)) {
             setIsLoading(true);
             try {
                 const loginResponse = await loginHandler(data);

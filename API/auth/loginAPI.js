@@ -30,7 +30,6 @@ const loginHandler = async (user) => {
 
     try {
         const response = await loginAPI(data);
-        console.log('Login successful:', response);
         return response;
     } catch (error) {
         console.error('Error during login:', error);
