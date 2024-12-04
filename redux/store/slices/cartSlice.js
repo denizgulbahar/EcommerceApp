@@ -1,8 +1,8 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Alert } from "react-native";
-import calculateTotalPrice from "../../features/cart/utilities/calculateTotalPrice";
-import listOrderDetails from "../../features/cart/utilities/listOrderDetails";
+import calculateTotalPrice from "../../feature/cart/utilities/calculateTotalPrice";
+import listOrderDetails from "../../feature/cart/utilities/listOrderDetails";
 
 // Async Storage persists data (e.g., cart state) across app restarts.
 // Redux state is in memory only, so we use Async Storage to restore it.
@@ -15,6 +15,16 @@ export const loadCartItems = createAsyncThunk(
     return storedCartItems ? JSON.parse(storedCartItems) : [];
   }
 );
+
+// Action always is an object
+// const exampleAction = {
+//   type: "cart/addToCartItem", // Slice.name + / + reducerName // İşlemin Türü
+//   payload: { id: 1, name: "Oyuncak Ayı", price: 10 } // Action'u başlatmak için gereken veriyi taşır.
+// };
+
+// NOT: Reducerların temel kuralı, saf (pure) fonksiyonlar olmalı. 
+// Yani yan etkilerden (side effects) uzak olmalı.
+// Örneğin, bir reducer'ın API çağrısı yapması veya bir dosya kaydetmesi doğru değildir.
 
 const cartSlice = createSlice({
   name: "cart",

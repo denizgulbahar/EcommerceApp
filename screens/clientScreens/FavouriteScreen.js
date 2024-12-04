@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Text, View, StyleSheet, FlatList } from 'react-native';
-import CartCard from '../../components/CartCard';
+import CartCard from '../../redux/feature/cart/childs/CartCard';
 import { color } from "../../styles/color";
 import { CartContext } from "../../contexts/CartContext";
 import { ScreenWrapper } from "../../components/wrappers/screenWrapper";

@@ -1,11 +1,12 @@
 import { Image, StyleSheet, Text, View } from "react-native";
 import React from "react";
-import { fonts } from "../../../styles/fonts";
+import { fonts } from "../../../../styles/fonts";
 import { IconButton } from "react-native-paper";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { color } from "../../../styles/color";
+import { color } from "../../../../styles/color";
 
 const CartCard = ({ item, onPress, favourite }) => {
+
   return (
     <View style={styles.card}>
       <Image source={{ uri: item.image }} style={styles.image} />
@@ -14,9 +15,7 @@ const CartCard = ({ item, onPress, favourite }) => {
         <Text style={styles.price}>${item.price}</Text>
         <View style={styles.textCircleContainer}>
           <View
-            style={[
-              styles.circle, { backgroundColor: item.color ? item.color :  "red" }
-            ]}
+            style={[ styles.circle, { backgroundColor: item.color ? item.color :  "red" } ]}
           />
           <View style={styles.sizeContainer}>
             <Text style={styles.sizeText}>{item.size}</Text>
