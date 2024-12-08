@@ -8,6 +8,7 @@ import listOrderDetails from "../../feature/cart/utilities/listOrderDetails";
 // Redux state is in memory only, so we use Async Storage to restore it.
 
 // Async thunk for loading cart items from AsyncStorage
+// Auto-Generated Action
 export const loadCartItems = createAsyncThunk(
   "cart/loadCartItems",
   async () => {
@@ -87,6 +88,6 @@ const cartSlice = createSlice({
   },
 });
 
-export const { addToCartItem, deleteCartItem } = cartSlice.actions;
+export const { addToCartItem, deleteCartItem, confirmCart } = cartSlice.actions;
 
 export default cartSlice.reducer;

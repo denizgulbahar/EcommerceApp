@@ -8,6 +8,8 @@ import { fonts } from "../../../styles/fonts";
 import { color } from "../../../styles/color";
 import { ScreenWrapper } from "../../../components/wrappers/screenWrapper";
 import { generalStyles } from "../../../styles/generalStyles";
+import ProductAddButton from "../../../redux/feature/cart/productDetailsContainer.js";
+
 const colorsArray = [
   color.darkGrey,
   color.danger,
@@ -16,27 +18,9 @@ const colorsArray = [
   color.success
 ];
 
-const ProductDetailScreen = ({ navigation }) => {
-  const value = useContext(CartContext);
-  const route = useRoute();
-  const product = route.params.item;
-  console.log("pro",product)
-  const [selectedSize, setSelectedSize] = useState("M");
-  const [selectedColor, setSelectedColor] = useState("#B11D1D");
+const ProductDetailScreen = ({ route, navigation }) => {
   
-  const handleAddToCart = async() => {
-    try{
-      product.color = selectedColor;
-      product.size = selectedSize;
-      await value.addToCartItem(product);
-    }catch(e) {
-      console.error("Product adding error")
-    } finally{
-      navigation.navigate("cart")
-    }
-  };
-  // Cloths Sizes
-  const sizes = ["S", "M", "L", "XL"];
+  
 
   return (
     <ScreenWrapper>
@@ -44,55 +28,11 @@ const ProductDetailScreen = ({ navigation }) => {
           <Image source={{ uri: product.image }} style={styles.coverImage} />
         </View>
         <View style={styles.contentContainer}>
-          <View style={generalStyles.rowContainer}>
+          <View style={styles.productContainer}>
             <Text style={styles.text}>{product.title}</Text>
             <Text style={styles.text}>${product.price}</Text>
           </View>
-          <Text style={styles.text}>Size</Text>
-          <View style={styles.sizeContainer}>
-            {sizes.map((size) => (
-            <ButtonOriginal
-              key={size}
-              buttonStyle={styles.sizeValue}
-              textStyle={[
-                styles.sizeValueText,
-                selectedSize === size && styles.selectedText,
-              ]}
-              title={size}
-              onPress={() => setSelectedSize(size)}
-            />
-            ))}
-          </View>
-          <Text style={styles.text}>Color</Text>
-          <View style={generalStyles.rowContainer}>
-            {colorsArray.map((color, index) => (
-            <TouchableOpacity
-              key={index}
-              onPress={() => setSelectedColor(color)}
-            >
-              <View
-                style={[
-                  styles.borderColorCircle,
-                  selectedColor === color && {
-                    borderColor: color,
-                    borderWidth: 2,
-                    borderRadius: 25,
-                  },
-                ]}
-              >
-                <View 
-                  style={[styles.colorCircle, { backgroundColor: color }]}
-                />
-              </View>
-            </TouchableOpacity>
-            ))}
-          </View>
-          <ButtonOriginal
-            buttonStyle={styles.button}
-            textStyle={styles.buttonText}
-            title="Add to Cart"
-            onPress={handleAddToCart}
-          />
+          <ProductDetailsContainer route={route} navigation={navigation} />
         </View>
     </ScreenWrapper>
    
@@ -102,6 +42,11 @@ const ProductDetailScreen = ({ navigation }) => {
 export default ProductDetailScreen;
 
 const styles = StyleSheet.create({
+  productContainer: {
+    flex: 1,
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
   container: {
     flex: 1,
   },

@@ -1,11 +1,11 @@
 import { ScreenWrapper } from "../../components/wrappers/screenWrapper";
-import { CartContainer } from "../../redux/feature/cart";
+import { ShoppingCartContainer } from "../../redux/feature/cart/shoppingCartContainer";
 
 const ShoppingCartScreen = () => {
 
   return (
     <ScreenWrapper>
-      <CartContainer/>
+      <ShoppingCartContainer />
     </ScreenWrapper>
   );
 };
