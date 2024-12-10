@@ -5,8 +5,8 @@ import tr from "../locales/tr.json"
 
 // Export for Data
 export const languageResources = {
-  en: {translation: en},
-  tr: {translation: tr},
+  en: { translation: en },
+  tr: { translation: tr },
 };
 
 i18next.use(initReactI18next).init({

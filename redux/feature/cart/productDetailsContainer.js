@@ -3,6 +3,8 @@ import { View, Text, StyleSheet } from 'react-native';
 import ButtonOriginal from '../../../components/buttons/buttonOriginal';
 import { addToCartItem } from '../../store/slices/cartSlice';
 import { useDispatch } from 'react-redux';
+import { fonts } from '../../../styles/fonts';
+import { color } from '../../../styles/color';
 const ProductDetailsContainer = ({ route, navigation }) => {
 
   const dispatch = useDispatch()

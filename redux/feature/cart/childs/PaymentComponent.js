@@ -1,4 +1,4 @@
-import { View, Text } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import { color } from "../../../../styles/color";
 import { fonts } from "../../../../styles/fonts";
 import { usePayment } from "../utilities/hooks/usePayment";

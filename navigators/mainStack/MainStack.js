@@ -1,4 +1,4 @@
-import withUserState from "../redux/feature/auth/utilities/withUserState";
+import withUserState from "./withUserState";
 
 // MainStack component (returns null for now)
 function MainStack() {
