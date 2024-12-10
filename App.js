@@ -6,18 +6,16 @@ import { NativeWindProvider } from 'nativewind';
 import { Provider } from 'react-redux'
 import store from './redux/store/store';
 
+// NativeWind will be integrated to App without Error
 export default function App() {
   return (
+    <Provider store={store}>
     <PaperProvider>
-      <NavigationContainer linking={{ enabled: true }}>
-        {/* User ve Card Providerlar Burada Olacak Store Olarak */}
-        <Provider store={store}>
-          <NativeWindProvider>
-              <MainStack />
-          </NativeWindProvider>
-        </Provider>
+      <NavigationContainer>
+        <MainStack />
       </NavigationContainer>
     </PaperProvider>
+    </Provider>
   );
 }
 

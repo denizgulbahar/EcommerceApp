@@ -4,7 +4,7 @@ import {
   Text,
   View,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Tags from "../../../components/Tags";
 import ProductCard from "../../../components/ProductCard";
 import data from "../../../data/dataTrending.json";
@@ -14,7 +14,7 @@ import { fonts } from "../../../styles/fonts";
 import { ScreenWrapper } from "../../../components/wrappers/screenWrapper";
 const SpecificCategoryScreen = ({ navigation }) => {
   
-  const [products, setProducts] = useState(data.products);
+  const [products, setProducts] = useState([]);
   const [search, setSearch] = useState("")
   const handleProductDetails = (item) => {
     navigation.navigate("details", { item });
@@ -32,6 +32,9 @@ const SpecificCategoryScreen = ({ navigation }) => {
       })
     );
   };
+  useEffect(() => {
+   setProducts(data.products) 
+  })
   return (
     <ScreenWrapper type="flatlist">
       <FlatList
@@ -65,11 +68,3 @@ const SpecificCategoryScreen = ({ navigation }) => {
 };
 
 export default SpecificCategoryScreen;
-
-const styles = StyleSheet.create({
-  headingText: {
-    fontSize: 28,
-    marginVertical: 20,
-    fontFamily: fonts.italic
-  },
-});

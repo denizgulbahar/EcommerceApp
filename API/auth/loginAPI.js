@@ -27,14 +27,14 @@ const loginHandler = async (user) => {
         email: user.email,
         password: user.password,
     };
-
-    try {
-        const response = await loginAPI(data);
-        return response;
-    } catch (error) {
-        console.error('Error during login:', error);
-        throw error; 
-    }
+    return data
+    // try {
+    //     const response = await loginAPI(data);
+    //     return response;
+    // } catch (error) {
+    //     console.error('Error during login:', error);
+    //     throw error; 
+    // }
 };
 
 export default loginHandler;

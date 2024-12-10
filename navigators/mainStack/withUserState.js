@@ -6,7 +6,7 @@ import MainStackLoggedOut from './childs/MainStackLoggedOut'; // Component for l
 const withUserState = () => {
   return (props) => {
     const isLoggedIn = useSelector((state) => state.auth.isLoggedIn)
-
+    
     // Pass down userState and conditionally render based on login status
     if (!isLoggedIn) {
       return <MainStackLoggedOut {...props} />;

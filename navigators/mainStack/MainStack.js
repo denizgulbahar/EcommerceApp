@@ -1,10 +1,6 @@
-import withUserState from "./withUserState";
+import withUserState from './withUserState';
 
-// MainStack component (returns null for now)
-function MainStack() {
-  return null; 
-}
+// Apply the HOC to conditionally render based on login state
+const MainStack = withUserState();
 
-// Wrapping MainStack with the HOC to add user state
-export default withUserState(MainStack);  
-
+export default MainStack;

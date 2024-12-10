@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { View, StyleSheet, Image, Alert } from 'react-native';
-import { useUserContext } from '../../contexts/UserContext';
-import LoadingComponent from '../../components/LoadingComponent';
+import Loading from '../../components/loading/loading';
 import ButtonOriginal from '../../components/buttons/buttonOriginal';
 import InputOriginal from '../../components/input/inputOriginal';
 import { Header } from '../../components/header/header';
@@ -9,7 +8,6 @@ import { ScreenWrapper } from '../../components/wrappers/screenWrapper';
 import loginHandler from '../../API/auth/loginAPI';
 
 const LoginScreen = ({ navigation }) => {
-    const { userDispatch } = useUserContext();
     const [isLoading, setIsLoading] = useState(false);
     const [email, setEmail] = useState("deniz.gulbahar@gmail.com");
     const [password, setPassword] = useState('Ecommerce123');
@@ -20,13 +18,14 @@ const LoginScreen = ({ navigation }) => {
     
     const handleLoginResponse = (response) => {
         const user = { ...response };
-        console.log("user",response)
-        if (user.data.token) {
-            userDispatch({ type: 'LOG_IN', payload: user });
-            navigation.navigate('client');
-        } else {
-            Alert.alert('Login failed. Please check your credentials.');
-        }
+        navigation.navigate('client')
+        console.log("user",user)
+        // if (user.data.token) {
+        //     userDispatch({ type: 'LOG_IN', payload: user });
+        //     navigation.navigate('client');
+        // } else {
+        //     Alert.alert('Login failed. Please check your credentials.');
+        // }
     };
     const handleLogin = async () => {
         const data = { email: email, password: password }
@@ -53,7 +52,7 @@ const LoginScreen = ({ navigation }) => {
     return (
         <ScreenWrapper>
             {isLoading ? (
-                <LoadingComponent /> 
+                <Loading/> 
             ) : (
                 <>
                 <Image
