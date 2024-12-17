@@ -31,7 +31,7 @@ export const ShoppingCartContainer = () => {
 
   return (
     <FlatList
-      style={{ flex: 1 }}
+      style={{ marginBottom: 50 }}
       data={cartItems}
       renderItem={({ item }) => (
       <CartCard item={item} onPress={handleDeleteItem} />

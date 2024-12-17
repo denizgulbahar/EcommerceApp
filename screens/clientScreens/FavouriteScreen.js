@@ -3,7 +3,7 @@ import { FavouriteContainer } from "../../redux/feature/cart/favouriteContainer"
 export default function FavouriteScreen ({ navigation }) {
   
   return (
-    <ScreenWrapper>
+    <ScreenWrapper type='flatlist'>
       <FavouriteContainer navigation={navigation} />
     </ScreenWrapper>
   );

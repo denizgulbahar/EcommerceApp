@@ -1,16 +1,13 @@
 import {
   FlatList,
-  StyleSheet,
-  Text,
   View,
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import Tags from "../../../components/Tags";
 import ProductCard from "../../../components/ProductCard";
-import data from "../../../data/dataTrending.json";
+import data from "../../../data/topTabData/dataTrending.json";
 import InputOriginal from "../../../components/input/inputOriginal";
 import { Feather } from "@expo/vector-icons";
-import { fonts } from "../../../styles/fonts";
 import { ScreenWrapper } from "../../../components/wrappers/screenWrapper";
 const SpecificCategoryScreen = ({ navigation }) => {
   

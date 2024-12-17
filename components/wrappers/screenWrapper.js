@@ -1,5 +1,4 @@
 import { 
-    View, 
     ScrollView, 
     StyleSheet, 
     KeyboardAvoidingView, 
@@ -38,7 +37,7 @@ export const ScreenWrapper = ({
             {/* Prevented notches on some phones from conflicting with screen content */}
                 <LinearGradient 
                     colors={gradientColors || defaultColors} // Gradient colors, defaults if none
-                    style={{ flex: 1, opacity: gradientOpacity || 1 }} // Opacity, defaults to 1
+                    style={{ flex: 1, paddingHorizontal: 10, opacity: gradientOpacity || 1 }} // Opacity, defaults to 1
                     start={gradientDirection?.start || { x: 0, y: 0 }} // Start point, defaults to top-left
                     end={gradientDirection?.end || { x: 1, y: 1 }} // End point, defaults to bottom-right
                 >
@@ -47,13 +46,10 @@ export const ScreenWrapper = ({
                     {/* Provided the keyboard to close when touching any non-interactive area */}
                         {isFlatList ? (
                             //  If Content is flatlist no need scrollView
-                            <View style={styles.contentContainer}>{children}</View>
+                            <>{children}</>
                         ) : (
                             //  Otherwise display content in scrollView
-                            <ScrollView 
-                                showsVerticalScrollIndicator={false} 
-                                contentContainerStyle={styles.scrollViewContent}
-                            >
+                            <ScrollView showsVerticalScrollIndicator={false}>
                                 {children}
                             </ScrollView>
                         )}
@@ -70,12 +66,8 @@ const styles = StyleSheet.create({
     },
     safeAreaView: {
         flex: 1,
+        marginBottom: 60, // It provides showing contents end in UI
     },
-    scrollViewContent: {
-        flexGrow: 1,  // Allow the ScrollView to grow vertically to fit its content.
-        paddingHorizontal: width >= 500 ? 20 : 10,
-        paddingBottom: 50, 
-    }
 }
 )
 

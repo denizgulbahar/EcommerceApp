@@ -7,10 +7,10 @@ import {
 } from "react-native";
 import React, { useState } from "react";
 import { fonts } from "../styles/fonts";
-import dataMen from "../data/dataMen.json"
-import dataWomen from "../data/dataWomen.json"
-import dataTrending from "../data/dataTrending.json"
-import dataNew from "../data/dataNew.json"
+import dataMen from "../data/topTabData/dataMen.json"
+import dataWomen from "../data/topTabData/dataWomen.json"
+import dataTrending from "../data/topTabData/dataTrending.json"
+import dataNew from "../data/topTabData/dataNew.json"
 const Tags = ({ setProducts }) => {
   const [selected, setSelected] = useState("Trending Now");
   const tags = [

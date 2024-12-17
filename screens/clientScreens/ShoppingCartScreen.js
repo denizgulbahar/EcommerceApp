@@ -4,7 +4,7 @@ import { ShoppingCartContainer } from "../../redux/feature/cart/shoppingCartCont
 const ShoppingCartScreen = () => {
 
   return (
-    <ScreenWrapper>
+    <ScreenWrapper type='flatlist'>
       <ShoppingCartContainer />
     </ScreenWrapper>
   );

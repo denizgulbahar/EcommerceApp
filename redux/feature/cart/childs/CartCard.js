@@ -4,29 +4,23 @@ import { IconButton } from "react-native-paper";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { color } from "../../../../styles/color";
 import { useState } from "react";
-const CartCard = ({ 
-  item, 
-  onPress, 
-  favourite
-}) => {
-  const [loading, setLoading] = useState(false);
+import ImageLoader from "../../../../components/imageLoader";
 
+
+const CartCard = ({ item, onPress, favourite }) => {
+
+  const [loading, setLoading] = useState(false);
   const updateLoading = (state) => {
     setLoading(state);
   };
 
   return (
     <View style={styles.card}>
-      <View style={styles.imageContainer}>
-        {loading && 
-        <ActivityIndicator size="large" color={color.mainColor} style={styles.activityIndicator} />}
-        <Image
-          source={{ uri: item.image }}
-          style={styles.image}
-          onLoadStart={() => updateLoading(true)}
-          onLoad={() => updateLoading(false)}
-        />
-      </View>
+      <ImageLoader
+        uri={item.image} 
+        loading={loading} 
+        updateLoading={updateLoading} 
+      />
       {!loading && (
       <> 
         <View style={styles.content}>
@@ -75,24 +69,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     marginBottom: 15,
     padding: 12,
-  },
-  imageContainer: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  image: {
-    height: 150,
-    width: 120,
-    resizeMode: "cover",
-    borderRadius: 10,
-  },
-  activityIndicator: {
-    flex: 1,
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: [{ translateX: -20 }, { translateY: -20 }],
   },
   title: {
     fontSize: 18,
