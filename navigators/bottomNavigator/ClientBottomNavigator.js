@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
         // can be customize later
     },
     tabContainer: {
-        height: 55,
+        height: 60,
         backgroundColor: color.softerMainColor,
         borderWidth: 0,
         borderTopWidth: 0,
