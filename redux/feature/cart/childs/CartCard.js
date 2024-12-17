@@ -1,39 +1,62 @@
-import { Image, StyleSheet, Text, View } from "react-native";
-import React from "react";
+import { Image, StyleSheet, Text, View, ActivityIndicator } from "react-native";
 import { fonts } from "../../../../styles/fonts";
 import { IconButton } from "react-native-paper";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { color } from "../../../../styles/color";
+import { useState } from "react";
+const CartCard = ({ 
+  item, 
+  onPress, 
+  favourite
+}) => {
+  const [loading, setLoading] = useState(false);
 
-const CartCard = ({ item, onPress, favourite }) => {
+  const updateLoading = (state) => {
+    setLoading(state);
+  };
 
   return (
     <View style={styles.card}>
-      <Image source={{ uri: item.image }} style={styles.image} />
-      <View style={styles.content}>
-        <Text style={styles.title}>{item.title}</Text>
-        <Text style={styles.price}>${item.price}</Text>
-        <View style={styles.textCircleContainer}>
-          <View
-            style={[ styles.circle, { backgroundColor: item.color ? item.color :  "red" } ]}
-          />
-          <View style={styles.sizeContainer}>
-            <Text style={styles.sizeText}>{item.size}</Text>
+      <View style={styles.imageContainer}>
+        {loading && 
+        <ActivityIndicator size="large" color={color.mainColor} style={styles.activityIndicator} />}
+        <Image
+          source={{ uri: item.image }}
+          style={styles.image}
+          onLoadStart={() => updateLoading(true)}
+          onLoad={() => updateLoading(false)}
+        />
+      </View>
+      {!loading && (
+      <> 
+        <View style={styles.content}>
+          <Text style={styles.title}>{item.title}</Text>
+          <Text style={styles.price}>${item.price}</Text>
+          <View style={styles.textCircleContainer}>
+            <View
+              style={[
+                styles.circle,
+                { backgroundColor: item.color ? item.color : "red" },
+              ]}
+            />
+            <View style={styles.sizeContainer}>
+              <Text style={styles.sizeText}>{item.size}</Text>
+            </View>
           </View>
         </View>
-      </View>
-      <IconButton 
-        style={styles.icon}
-        onPress={favourite ? onPress : () => onPress(item.id)}
-        icon={({ }) => (
-          <MaterialCommunityIcons
-            name={favourite ? "plus-circle": "trash-can-outline"}
-            color={favourite ? color.white : color.danger}
-            size={40}
-          />
-        )}
-        
-      />
+        <IconButton
+          style={styles.icon}
+          onPress={favourite ? onPress : () => onPress(item.id)}
+          icon={() => (
+            <MaterialCommunityIcons
+              name={favourite ? "plus-circle" : "trash-can-outline"}
+              color={favourite ? color.white : color.danger}
+              size={40}
+            />
+          )}
+        />
+      </>
+      )}
     </View>
   );
 };
@@ -41,10 +64,10 @@ const CartCard = ({ item, onPress, favourite }) => {
 export default CartCard;
 
 const styles = StyleSheet.create({
-  icon: { 
-    width: 60, 
-    height: 60, 
-    alignSelf: "center" 
+  icon: {
+    width: 60,
+    height: 60,
+    alignSelf: "center",
   },
   card: {
     flex: 1,
@@ -53,11 +76,23 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     padding: 12,
   },
+  imageContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
   image: {
     height: 150,
     width: 120,
     resizeMode: "cover",
     borderRadius: 10,
+  },
+  activityIndicator: {
+    flex: 1,
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: [{ translateX: -20 }, { translateY: -20 }],
   },
   title: {
     fontSize: 18,
@@ -80,7 +115,7 @@ const styles = StyleSheet.create({
     alignItems: "flex-start",
     padding: 10,
     margin: 10,
-    borderRadius: 10
+    borderRadius: 10,
   },
   circle: {
     height: 32,
@@ -106,3 +141,4 @@ const styles = StyleSheet.create({
     marginVertical: 5,
   },
 });
+

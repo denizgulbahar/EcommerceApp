@@ -14,20 +14,13 @@ const HomeTopNavigator = ({ route }) => {
                     swipeEnabled: true,
                     tabBarStyle: {
                         backgroundColor: color.secondColor,
-                        borderBottomEndRadius: 20,
-                        borderBottomStartRadius: 20,
-                        position: 'absolute',
+                        borderRadius: 20,
+                        position: 'relative',
                         top: 0,
                         left: 0,
                         right: 0,
+                        bottom: 60,
                         height: 60,
-                        shadowColor: color.black,
-                        shadowOffset: {
-                            width: 0,
-                            height: 2,
-                        },
-                        shadowOpacity: 0.25,
-                        shadowRadius: 3.84,
                     },
                     tabBarLabelStyle: {
                         fontSize: 12,
@@ -36,17 +29,12 @@ const HomeTopNavigator = ({ route }) => {
                     },
                     tabBarIndicatorStyle: {
                         backgroundColor: color.white,
-                        height: 2,
+                        height: 3,
                         borderRadius: 10,
-                        width: ((width / 3) / 3) * 2,
-                        marginLeft: (width / 3) / 3 / 2,
+                        flex: 1,
                     },
                     tabBarActiveTintColor: color.white,
                     tabBarInactiveTintColor: color.white,
-                }}
-                sceneContainerStyle={{
-                    backgroundColor: color.mainColor,
-                    paddingTop: 60,
                 }}
             >   
                 <Tab.Screen

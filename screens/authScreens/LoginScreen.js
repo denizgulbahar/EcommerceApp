@@ -8,7 +8,7 @@ import { ScreenWrapper } from '../../components/wrappers/screenWrapper';
 import loginHandler from '../../API/auth/loginAPI';
 
 const LoginScreen = ({ navigation }) => {
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(false); 
     const [email, setEmail] = useState("deniz.gulbahar@gmail.com");
     const [password, setPassword] = useState('Ecommerce123');
 
@@ -70,7 +70,7 @@ const LoginScreen = ({ navigation }) => {
                     />
                     <InputOriginal
                         icon="email"
-                        label="Şifre"
+                        label="Password"
                         kind="password"
                         keyboard="password"
                         secureText="true"

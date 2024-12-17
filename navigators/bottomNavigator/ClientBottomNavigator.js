@@ -13,13 +13,11 @@ const ClientBottomNavigator = () => {
         <SafeAreaView style={{ flex: 1 }}>
             <Tab.Navigator
                 initialRouteName='home'
-                sceneContainerStyle={styles.sceneContainerStyle}
                 screenOptions={({ route }) => ({
                     headerShown: false,
-                    activeTabBarItemStyle: styles.activeTabBarItemStyle,
-                    inactiveTabBarItemStyle: styles.inactiveTabBarItemStyle,
                     tabBarStyle: styles.tabContainer,
                     tabBarItemStyle: styles.tabBarItem,
+                    tabBarLabelStyle: styles.tabBarLabelStyle,
                     tabBarIcon: ({ color }) => {
                         let iconName;
                         if (route.name === 'home') {
@@ -50,23 +48,13 @@ const ClientBottomNavigator = () => {
     );
 };
 const styles = StyleSheet.create({
-    tabIconContainer: {
-    },
     tabBarItem: {
-    },
-    activeTabBarItemStyle: {
-
-    },
-    inactiveTabBarItemStyle: {
-
+        // can be customize later
     },
     tabContainer: {
-        height: 49,
-        backgroundColor: color.mainColor,
+        height: 55,
+        backgroundColor: color.softerMainColor,
         borderWidth: 0,
-        borderColor: color.mainColor,
-        borderTopEndRadius: 20,
-        borderTopStartRadius: 20,
         borderTopWidth: 0,
         position: 'absolute',
         bottom: 0,
@@ -74,18 +62,12 @@ const styles = StyleSheet.create({
         right: 0,
         paddingTop: 2,
         paddingBottom: 2,
-        shadowColor: "#000000",
-        shadowOffset: {
-            width: 0,
-            height: 0,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 3.45,
     },
-    sceneContainerStyle: {
-
+    tabBarLabelStyle: {
+        fontSize: 15,
     }
 });
+
 
 
 export default ClientBottomNavigator;
