@@ -3,8 +3,7 @@ import React, { useState } from "react";
 import { IconButton } from "react-native-paper";
 import { MaterialIcons } from "@expo/vector-icons";
 import Loading from "../components/loading/loading";
-import ButtonOriginal from "./buttons/buttonOriginal";
-const ProductCard = ({ item, handleProductClick, toggleFavorite }) => {
+const ProductCard = ({ item, passToProductDetails, toggleFavorite }) => {
 
   const [loading, setLoading] = useState(true);
   const handleImageLoad = () => {
@@ -13,7 +12,7 @@ const ProductCard = ({ item, handleProductClick, toggleFavorite }) => {
   return (
     <TouchableOpacity
       style={styles.container}
-      onPress={() => handleProductClick(item)}
+      onPress={() => passToProductDetails(item)}
     >
       {loading &&  <Loading /> }
       <Image source={{ uri: item.image }} style={styles.coverImage}  onLoad={handleImageLoad}/>

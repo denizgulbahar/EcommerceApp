@@ -13,7 +13,8 @@ const SpecificCategoryScreen = ({ navigation }) => {
   
   const [products, setProducts] = useState([]);
   const [search, setSearch] = useState("")
-  const handleProductDetails = (item) => {
+  const passToProductDetails = (item) => {
+    console.log("item:",item)
     navigation.navigate("details", { item });
   };
   const toggleFavorite = (item) => {
@@ -54,7 +55,7 @@ const SpecificCategoryScreen = ({ navigation }) => {
         renderItem={({ item }) => (
           <ProductCard
             item={item}
-            handleProductClick={handleProductDetails}
+            passToProductDetails={passToProductDetails}
             toggleFavorite={toggleFavorite}
           />
         )}

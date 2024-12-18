@@ -1,6 +1,6 @@
 import { FlatList, StyleSheet, View, Text, SafeAreaView } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
-import CartCard from './childs/CartCard';
+import CartCard from './components/CartCard';
 import { useDispatch } from 'react-redux';
 import { addToCartItem } from '../../store/slices/cartSlice';
 import { color } from '../../../styles/color';

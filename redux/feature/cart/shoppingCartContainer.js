@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { FlatList } from 'react-native';
 import ButtonOriginal from '../../../components/buttons/buttonOriginal';
-import CartCard from './childs/CartCard';
-import { PaymentComponent } from './childs/PaymentComponent';
+import CartCard from './components/CartCard';
+import { PaymentComponent } from './components/PaymentComponent';
 import { useDispatch, useSelector } from 'react-redux';
 import { loadCartItems, deleteCartItem, confirmCart } from '../../store/slices/cartSlice';
 export const ShoppingCartContainer = () => {

@@ -1,36 +1,21 @@
-import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import React, { useContext, useState } from "react";
-import { useRoute } from "@react-navigation/native";
-import { addToCart } from "../../../utilities/helper"
-import { CartContext } from "../../../contexts/CartContext"
-import ButtonOriginal from "../../../components/buttons/buttonOriginal";
+import { Image, StyleSheet, Text, View } from "react-native";
 import { fonts } from "../../../styles/fonts";
 import { color } from "../../../styles/color";
 import { ScreenWrapper } from "../../../components/wrappers/screenWrapper";
-import { generalStyles } from "../../../styles/generalStyles";
-import ProductAddButton from "../../../redux/feature/cart/productDetailsContainer.js";
-
-const colorsArray = [
-  color.darkGrey,
-  color.danger,
-  color.white,
-  color.black,
-  color.success
-];
+import ProductDetailsContainer from "../../../redux/feature/cart/productDetailsContainer";
 
 const ProductDetailScreen = ({ route, navigation }) => {
-  
-  
-
+  const { item } = route.params
+  console.log("product:",item)
   return (
     <ScreenWrapper>
         <View style={styles.imageContainer}>
-          <Image source={{ uri: product.image }} style={styles.coverImage} />
+          <Image source={{ uri: item.image }} style={styles.coverImage} />
         </View>
         <View style={styles.contentContainer}>
           <View style={styles.productContainer}>
-            <Text style={styles.text}>{product.title}</Text>
-            <Text style={styles.text}>${product.price}</Text>
+            <Text style={styles.text}>{item.title}</Text>
+            <Text style={styles.text}>${item.price}</Text>
           </View>
           <ProductDetailsContainer route={route} navigation={navigation} />
         </View>
