@@ -3,14 +3,13 @@ import {
   View,
 } from "react-native";
 import React, { useEffect, useState } from "react";
-import Tags from "../../../components/Tags";
 import ProductCard from "../../../components/ProductCard";
-import data from "../../../data/topTabData/dataTrending.json";
 import InputOriginal from "../../../components/input/inputOriginal";
 import { Feather } from "@expo/vector-icons";
 import { ScreenWrapper } from "../../../components/wrappers/screenWrapper";
-const SpecificCategoryScreen = ({ navigation }) => {
+const SpecificCategoryScreen = ({ route, navigation }) => {
   
+  const { data } = route.params
   const [products, setProducts] = useState([]);
   const [search, setSearch] = useState("")
   const passToProductDetails = (item) => {
@@ -31,7 +30,9 @@ const SpecificCategoryScreen = ({ navigation }) => {
     );
   };
   useEffect(() => {
-   setProducts(data.products) 
+    if(data) {
+      setProducts(data.products) 
+    }
   })
   return (
     <ScreenWrapper type="flatlist">
@@ -47,7 +48,6 @@ const SpecificCategoryScreen = ({ navigation }) => {
                   onChangeText={(v) => setSearch(v)}
                 />
               </View>
-              <Tags setProducts={setProducts} />
           </>
         }
         data={products}

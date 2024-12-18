@@ -3,15 +3,24 @@ import { fonts } from "../../../styles/fonts";
 import { color } from "../../../styles/color";
 import { ScreenWrapper } from "../../../components/wrappers/screenWrapper";
 import ProductDetailsContainer from "../../../redux/feature/cart/productDetailsContainer";
+import ImageLoader from "../../../components/imageLoader";
+import { useState } from "react";
 
 const ProductDetailScreen = ({ route, navigation }) => {
   const { item } = route.params
   console.log("product:",item)
+  const [loading, setLoading] = useState(false)
+  const updateLoading = (loading) => {
+    setLoading(loading)
+  }
   return (
     <ScreenWrapper>
-        <View style={styles.imageContainer}>
-          <Image source={{ uri: item.image }} style={styles.coverImage} />
-        </View>
+        <ImageLoader 
+          uri={item.image} 
+          loading={loading}
+          updateLoading={updateLoading}
+          imageStyle={styles.imageStyle}
+        />
         <View style={styles.contentContainer}>
           <View style={styles.productContainer}>
             <Text style={styles.text}>{item.title}</Text>
@@ -38,7 +47,7 @@ const styles = StyleSheet.create({
   header: {
     padding: 15,
   },
-  imageContainer: {
+  imageStyle: {
     height: 420,
     width: "100%",
   },

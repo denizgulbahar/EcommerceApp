@@ -1,9 +1,11 @@
-import { View, Text, Dimensions, SafeAreaView } from 'react-native';
+import { Dimensions, SafeAreaView } from 'react-native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { color } from '../../../styles/color';
-import OtherCategoriesStack from './OtherCategoriesStack';
 import SpecificCategoryScreen from '../../../screens/clientScreens/homeScreens/SpecificCategoryScreen';
-const width = Dimensions.get('window').width;
+import dataTrending from "../../../data/topTabData/dataTrending.json";
+import dataMen from "../../../data/topTabData/dataMen.json";
+import dataWomen from "../../../data/topTabData/dataWomen.json";
+
 const Tab = createMaterialTopTabNavigator()
 const HomeTopNavigator = ({ route }) => {
 
@@ -41,22 +43,20 @@ const HomeTopNavigator = ({ route }) => {
                     name="trends"
                     options={{ tabBarLabel: 'Trendler' }}
                     component={SpecificCategoryScreen}
+                    initialParams={{ data: dataTrending }}
                 />
                 <Tab.Screen
                     name="man"
                     options={{ tabBarLabel: 'Erkek' }}
                     component={SpecificCategoryScreen}
+                    initialParams={{ data: dataMen }}
                 />
                 <Tab.Screen
                     name="woman"
                     options={{ tabBarLabel: 'Kadın' }}
                     component={SpecificCategoryScreen}
+                    initialParams={{ data: dataWomen }}
                 />
-                {/* <Tab.Screen
-                    name="categories"
-                    options={{ tabBarLabel: 'Diğer' }}
-                    component={OtherCategoriesStack}
-                /> */}
             </Tab.Navigator>
         </SafeAreaView>
     );

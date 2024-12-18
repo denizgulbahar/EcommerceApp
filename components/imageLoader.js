@@ -2,7 +2,7 @@ import React from "react";
 import { Image, View, StyleSheet, ActivityIndicator } from "react-native";
 import { color } from "../styles/color";
 
-const ImageLoader = ({ uri, loading, updateLoading }) => {
+const ImageLoader = ({ uri, loading, updateLoading, imageStyle }) => {
   return (
     <View style={styles.imageContainer}>
       {loading && (
@@ -14,7 +14,7 @@ const ImageLoader = ({ uri, loading, updateLoading }) => {
       )}
       <Image
         source={{ uri }}
-        style={styles.image}
+        style={[styles.image, imageStyle]}
         onLoadStart={() => updateLoading(true)}
         onLoad={() => updateLoading(false)} // When image is loaded
       />
