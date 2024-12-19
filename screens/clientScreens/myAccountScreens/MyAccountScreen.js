@@ -16,6 +16,10 @@ const MyAccountScreen = ({ navigation }) => {
             <AntDesign name="caretright" size={24} color={color.black} style={{ opacity: 0.8}} />
         </View>
     )
+    const handleNavigation = (field) => {
+        // navigation.navigate(field.route)
+        console.log("navigation:", field.route);
+    }
     return (
         <ScreenWrapper>
             <Header viewStyle={styles.headerView} text="Hesabım" />
@@ -26,7 +30,7 @@ const MyAccountScreen = ({ navigation }) => {
                   buttonStyle={styles.profileButtons}
                   textStyle={{ flex: 1, color: color.black }}
                   title={<ButtonTitleComponent icon={field.icon} text={field.text} />}
-                  onPress={() => navigation.navigate(field.route)}
+                  onPress={() => handleNavigation(field)}
                 /> 
             ))
             }
