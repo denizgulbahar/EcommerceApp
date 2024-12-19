@@ -18,7 +18,7 @@ export const FavouriteContainer = ({ navigation }) => {
   // Function
   const handleAddToCart = (item) => {
     dispatch(addToCartItem(item));
-    navigation.navigate("cart");
+    navigation.navigate("my-cart");
   }
 
   return (

@@ -65,8 +65,9 @@ const styles = StyleSheet.create({
   },
   card: {
     flex: 1,
-    backgroundColor: "#66B3FF",
     flexDirection: "row",
+    backgroundColor: "#66B3FF",
+    borderRadius: 10,
     marginBottom: 15,
     padding: 12,
   },

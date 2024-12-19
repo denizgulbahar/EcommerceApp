@@ -8,7 +8,7 @@ import { useState } from "react";
 
 const ProductDetailScreen = ({ route, navigation }) => {
   const { item } = route.params
-  console.log("product:",item)
+  // console.log("product:",item)
   const [loading, setLoading] = useState(false)
   const updateLoading = (loading) => {
     setLoading(loading)

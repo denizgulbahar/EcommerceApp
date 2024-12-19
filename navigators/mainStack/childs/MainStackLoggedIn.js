@@ -44,7 +44,6 @@ function MainStackLoggedIn() {
         <Stack.Screen name="previous-orders" component={PreviousOrderScreen} />
         <Stack.Screen name="home" component={SpecificCategoryScreen} />
         <Stack.Screen name="details" component={ProductDetailScreen} />
-        <Stack.Screen name="cart" component={ShoppingCartScreen} />
         <Stack.Screen name="other-categories" component={OtherCategoriesScreen} />
         <Stack.Screen name="favourites" component={FavouriteScreen} />
       </Stack.Navigator>

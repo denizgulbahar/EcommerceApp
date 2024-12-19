@@ -49,6 +49,7 @@ const styles = StyleSheet.create({
         fontWeight: "600",
     },
     checkout: {
+        borderRadius: 10,
         backgroundColor: color.cottonCandyRed,
         height: 60,
         alignItems: "center",

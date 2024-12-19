@@ -19,7 +19,7 @@ const ProductDetailsContainer = ({ route, navigation }) => {
     product.color = selectedColor;
     product.size = selectedSize;
     dispatch(addToCartItem(product));
-    navigation.navigate("cart");
+    navigation.navigate("my-cart");
   };
   const updateSize = (size) => {
     setSelectedSize(size)

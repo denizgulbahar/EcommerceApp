@@ -24,7 +24,7 @@ const ClientBottomNavigator = () => {
                             iconName = 'home';
                         } else if (route.name === 'favourites') {
                             iconName = 'heart';
-                        } else if (route.name === 'my-basket') {
+                        } else if (route.name === 'my-cart') {
                             iconName = 'shopping-basket';
                         } else if (route.name === 'my-account') {
                             iconName = 'user-circle-o';
@@ -41,7 +41,7 @@ const ClientBottomNavigator = () => {
             >
                 <Tab.Screen name="home" options={{ tabBarLabel: "AnaSayfa", unmountOnBlur: true }} component={HomeTopNavigator} />
                 <Tab.Screen name="favourites" options={{ tabBarLabel: "Favorilerim", unmountOnBlur: true }} component={FavouriteScreen} />
-                <Tab.Screen name="my-basket" options={{ tabBarLabel: "Sepetim", unmountOnBlur: true }} component={ShoppingBasketScreen} />
+                <Tab.Screen name="my-cart" options={{ tabBarLabel: "Sepetim", unmountOnBlur: true }} component={ShoppingBasketScreen} />
                 <Tab.Screen name="my-account" options={{ tabBarLabel: "Hesabım", unmountOnBlur: true  }} component={MyAccountScreen} />
             </Tab.Navigator>
         </SafeAreaView>
