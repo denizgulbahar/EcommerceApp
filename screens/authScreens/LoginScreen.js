@@ -5,50 +5,19 @@ import ButtonOriginal from '../../components/buttons/buttonOriginal';
 import InputOriginal from '../../components/input/inputOriginal';
 import { Header } from '../../components/header/header';
 import { ScreenWrapper } from '../../components/wrappers/screenWrapper';
-import loginHandler from '../../API/auth/loginAPI';
+import LoginButton from '../../redux/feature/auth/loginButton';
 
 const LoginScreen = ({ navigation }) => {
     const [isLoading, setIsLoading] = useState(false); 
     const [email, setEmail] = useState("deniz.gulbahar@gmail.com");
     const [password, setPassword] = useState('Ecommerce123');
 
-    const mockCredentialsValid = (email, password) => {
-        return email === "deniz.gulbahar@gmail.com" && password === "Ecommerce123";
-    };
-    
-    const handleLoginResponse = (response) => {
-        const user = { ...response };
-        navigation.navigate('client')
-        console.log("user",user)
-        // if (user.data.token) {
-        //     userDispatch({ type: 'LOG_IN', payload: user });
-        //     navigation.navigate('client');
-        // } else {
-        //     Alert.alert('Login failed. Please check your credentials.');
-        // }
-    };
-    const handleLogin = async () => {
-        const data = { email: email, password: password }
-        if (mockCredentialsValid(email, password)) {
-            setIsLoading(true);
-            try {
-                const loginResponse = await loginHandler(data);
-                console.log("resp",loginResponse)
-               handleLoginResponse(loginResponse);
-            } catch (error) {
-                console.error('Login başarısız, API isteği başarısız', error);
-                Alert.alert('Login başarısız. Lütfen tekrar deneyin.');
-            } finally {
-                setIsLoading(false);
-            }
-        } else {
-            Alert.alert('Kullanıcı Adı yada Parola Hatalı');
-        }
-    };
-    
     const handleForgotPassword = () => {
         navigation.navigate('password');
     };
+    const updateLoading = (state) => {
+        setIsLoading(state);
+    }
     return (
         <ScreenWrapper>
             {isLoading ? (
@@ -87,10 +56,10 @@ const LoginScreen = ({ navigation }) => {
                             onPress={handleForgotPassword}
                         />
                     </View>
-                    <ButtonOriginal 
-                        title="GİRİŞ"
-                        onPress={handleLogin} 
-                        buttonStyle={{ marginTop: 20 }} 
+                    <LoginButton 
+                        email={email}
+                        password={password}
+                        updateLoading={updateLoading} 
                     />
                 </>
             )}

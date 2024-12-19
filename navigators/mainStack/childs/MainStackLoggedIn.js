@@ -21,7 +21,7 @@ function MainStackLoggedIn() {
     <>
       <StatusBar style="auto" />
       <Stack.Navigator
-        initialRouteName="favourites"
+        initialRouteName="client"
         screenOptions={{
           headerShown: false,
           headerRight: () => (

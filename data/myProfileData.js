@@ -1,4 +1,4 @@
-import { Ionicons, FontAwesome5, MaterialCommunityIcons } from "@expo/vector-icons";
+import { Ionicons, FontAwesome5 } from "@expo/vector-icons";
 import { color } from "../styles/color";
 
 export const myProfileData = [
@@ -11,10 +11,5 @@ export const myProfileData = [
         icon: <FontAwesome5 name="wallet" size={32} color={color.black} />, 
         text: "Siparişlerim",
         route:"previous-orders",
-    },
-    {
-        icon: <MaterialCommunityIcons name="exit-to-app" size={36} color={color.redstrong} />, 
-        text: "Çıkış Yap",
-        route:"login",
     },
    ]

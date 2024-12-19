@@ -1,18 +1,14 @@
 import { View, Text, StyleSheet } from 'react-native';
-import { useUserContext } from '../../../contexts/UserContext';
 import { color } from '../../../styles/color';
 import ButtonOriginal from '../../../components/buttons/buttonOriginal';
 import { AntDesign } from '@expo/vector-icons';
 import { ScreenWrapper } from '../../../components/wrappers/screenWrapper';
 import { Header } from '../../../components/header/header';
 import { myProfileData } from '../../../data/myProfileData';
+import ExitButton from '../../../redux/feature/auth/exitButton';
 
 const MyAccountScreen = ({ navigation }) => {
-    const { userState, userDispatch } = useUserContext();
-    const handleLogout = async () => {
-        navigation.navigate("login")
-        // userDispatch({ type: 'LOG_OUT' });
-    };
+
     const ButtonTitleComponent = ({ icon, text }) => (
         <View style={styles.buttonTitleView}>
             {icon}
@@ -20,7 +16,6 @@ const MyAccountScreen = ({ navigation }) => {
             <AntDesign name="caretright" size={24} color={color.black} style={{ opacity: 0.8}} />
         </View>
     )
-  
     return (
         <ScreenWrapper>
             <Header viewStyle={styles.headerView} text="Hesabım" />
@@ -36,6 +31,7 @@ const MyAccountScreen = ({ navigation }) => {
             ))
             }
             </View>
+            <ExitButton />
         </ScreenWrapper>
     );
 }
