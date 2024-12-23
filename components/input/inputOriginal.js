@@ -1,57 +1,63 @@
 import { TextInput } from 'react-native-paper';
 import { StyleSheet } from 'react-native';
 import { color } from '../../styles/color';
-import { useEffect, useState } from 'react';
-const InputOriginal = (props) => {
-  const [secureTextEntry, setSecureTextEntry] = useState(false);
-  
-  const toggleSecureEntry = () => {
-    setSecureTextEntry(!secureTextEntry);
-  };
-
-  useEffect(() => {
-    setSecureTextEntry(props.secureTextEntry);
+import { useCallback, useState } from 'react';
+const InputOriginal = ({
+  label = "",
+  icon = "email",
+  rightIcon = false,
+  kind = "",
+  multiline = false,
+  keyboardType = "default",
+  placeholder = "",
+  editable = true,
+  value = "",
+  onChangeText = null,
+  numberOfLines = 1,
+  inputStyle = {},
+}) => {
+  const toggleSecureEntry = useCallback(() => {
+    setSecureTextEntry(prevState => !prevState);
   },[])
+  const shouldUseSecure = kind === 'password';
+  const [secureTextEntry, setSecureTextEntry] = useState(shouldUseSecure);
 
-  let rightIcon;
-
-  if(props.rightIcon) {
-    rightIcon = props.rightIcon;
-  } 
-
-  if(props.kind === 'password') {
-    rightIcon = secureTextEntry ? 'eye' : 'eye-off'
-  } 
+  function handleRightIcon() {
+    if(shouldUseSecure) {
+      return secureTextEntry ? 'eye' : 'eye-off'
+    }
+    return rightIcon
+  }
+  
   return (
     <TextInput
-        label={props.label}
-        style={[ styles.input, props.inputStyle ]}
-        value={props.value}
-        onChangeText={props.onChangeText}
-        left={!props.noIcon && (
+        label={label}
+        style={[ styles.input, inputStyle ]}
+        value={value}
+        onChangeText={onChangeText}
+        left={
           <TextInput.Icon 
-            icon={props.icon ? props.icon : "email"} 
+            icon={icon} 
             color={color.mainColor} 
             style={{ top: 13, left: 5 }} 
           /> 
-          )
         }
         right={
           <TextInput.Icon 
-            icon={rightIcon} 
-            onPress={props.kind==="password" && toggleSecureEntry} 
+            icon={handleRightIcon()} 
+            onPress={shouldUseSecure && toggleSecureEntry} 
             color={color.mainColor} 
             style={{ top: 12, left: 5 }} 
           />   
         }
-        editable={props.editable}
+        editable={editable}
         mode="outlined"
         underlineColor="transparent"
         secureTextEntry={secureTextEntry}
-        multiline={props.multiline}
-        placeholder={props.placeholder}
-        keyboardType={props.keyboardType}
-        numberOfLines={props.numberOfLines}
+        multiline={multiline}
+        placeholder={placeholder}
+        keyboardType={keyboardType}
+        numberOfLines={numberOfLines}
       />
     
   );

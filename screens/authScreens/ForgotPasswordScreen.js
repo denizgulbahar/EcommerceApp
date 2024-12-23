@@ -11,10 +11,14 @@ const ForgotPasswordScreen = ({ navigation }) => {
     const [confirmPassword, setConfirmPassword] = useState('');
 
     const handleResetPassword = () => {
-        if(password===confirmPassword){
-            Alert.alert("şifreniz yenilenmiştir.")
+        if(password && confirmPassword){
+            if(password === confirmPassword){
+                Alert.alert("şifreniz yenilenmiştir.")
+            } else {
+                Alert.alert("şifreler uyuşmuyor, lütfen tekrar deneyin!")
+            }
         } else {
-            Alert.alert("şifreler uyuşmuyor, lütfen tekrar deneyin!")
+            Alert.alert("Yeni şifreyi giriniz.")
         }
     };
     

@@ -4,7 +4,7 @@ import InputOriginal from "../input/inputOriginal";
 import { useTranslation } from "react-i18next";
 import React from "react";
 import { color } from "../../styles/color";
-export const MyAccountContainer = ({accountInputs,setAccountInputs}) => {
+export const MyAccountContainer = ({ accountInputs, setAccountInputs }) => {
     const {t} = useTranslation()
     function setAccountsHandler(key, value) {
         let tempAddress = { ...accountInputs };
