@@ -1,4 +1,4 @@
-import { Dimensions, SafeAreaView } from 'react-native';
+import { SafeAreaView } from 'react-native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { color } from '../../../styles/color';
 import SpecificCategoryScreen from '../../../screens/clientScreens/homeScreens/SpecificCategoryScreen';

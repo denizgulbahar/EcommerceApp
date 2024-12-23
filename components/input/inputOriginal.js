@@ -45,7 +45,7 @@ const InputOriginal = ({
         right={
           <TextInput.Icon 
             icon={handleRightIcon()} 
-            onPress={shouldUseSecure && toggleSecureEntry} 
+            onPress={shouldUseSecure ? toggleSecureEntry : null} 
             color={color.mainColor} 
             style={{ top: 12, left: 5 }} 
           />   
