@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Alert } from "react-native";
 import { useDispatch } from "react-redux";
 import ButtonOriginal from "../../../components/buttons/buttonOriginal";
@@ -10,13 +9,19 @@ const LoginButton = ({ email, password, updateLoading }) => {
     const mockCredentialsValid = (email, password) => {
         return email === "deniz.gulbahar@gmail.com" && password === "Ecommerce123";
     };
-    
     const handleLogin = async () => {
 
+        const user = {
+            name: "deniz",
+            surname: "gülbahar",
+            password: 'Ecommerce123',
+            email: 'deniz.gulbahar@gmail.com',
+            telNo: '0552 481 18 16'
+        }
         if (mockCredentialsValid(email, password)) {
             updateLoading(true);
             try {
-                dispatch(signIn())
+                dispatch(signIn(user))
             } catch (error) {
                 console.error('Login başarısız. Lütfen tekrar deneyin.', error);
                 Alert.alert('Login başarısız. Lütfen tekrar deneyin.');
@@ -30,7 +35,7 @@ const LoginButton = ({ email, password, updateLoading }) => {
 
     return (
         <ButtonOriginal 
-            title="GİRİŞ"
+            title="LOGIN"
             onPress={handleLogin} 
             buttonStyle={{ marginTop: 20 }} 
         />

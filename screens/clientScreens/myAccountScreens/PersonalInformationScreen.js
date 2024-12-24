@@ -1,38 +1,35 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, Alert } from 'react-native';
-import { useUserContext } from '../../../contexts/UserContext';
 import { MyAccountContainer } from '../../../components/containers/MyAccountContainer';
 import ButtonOriginal from '../../../components/buttons/buttonOriginal';
 import { ScreenWrapper } from '../../../components/wrappers/screenWrapper';
 import { Header } from '../../../components/header/header';
-import { color } from '../../../styles/color';
+import { useSelector } from 'react-redux';
+
 const PersonalInformationScreen = ({ navigation }) => {
-    const [loading, setLoading] = useState(false);
-    const [balance, setBalance] = useState('Yükleniyor...');
-    // useEffect(() => {
-    //     setLoading(true)
-    //     fetchBalance({setLoading,setBalance,userState});
-    // }, [userState])
-    const { userState, userDispatch } = useUserContext();
+    const user = useSelector((state) => state.auth.user)
+    const isLoggedIn = useSelector((state) => state.auth.isLoggedIn)
+    console.log("user:",user)
+
     const [accountInputs, setAccountInputs] = useState({
-        name: '',
-        surname: '',
-        password: '',
-        email: '',
-        telNo: '',
+        name: user.name,
+        surname: user.surname,
+        password: user.password,
+        email: user.email,
+        telNo: user.telNo,
     });
     useEffect(() => {
-        if (userState.user) {
+        if (user) {
             setAccountInputs((prev) => ({
                 ...prev,
-                name:userState.user.name,
-                surname: userState.user.lastname,
-                password: userState.user.password,
-                telNo: userState.user.phone,
-                email: userState.user.email,
+                name:user.name,
+                surname: user.surname,
+                password: user.password,
+                telNo: user.telNo,
+                email: user.email,
             }))
         }
-    },[userState.isLoggedIn])
+    },[isLoggedIn])
 
     const handleLogout = async () => {
         navigation.navigate("client-login")

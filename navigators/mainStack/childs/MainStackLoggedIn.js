@@ -8,6 +8,8 @@ import SpecificCategoryScreen from '../../../screens/clientScreens/homeScreens/S
 import ProductDetailScreen from '../../../screens/clientScreens/homeScreens/ProductDetailScreen'; 
 import OtherCategoriesScreen from '../../../screens/clientScreens/homeScreens/OtherCategoriesScreen';
 import FavouriteScreen from '../../../screens/clientScreens/FavouriteScreen'; 
+import PersonalInformationScreen from '../../../screens/clientScreens/myAccountScreens/PersonalInformationScreen';
+import PreviousOrderScreen from '../../../screens/clientScreens/myAccountScreens/PreviousOrderScreen';
 
 const Stack = createStackNavigator();
 
@@ -37,8 +39,8 @@ function MainStackLoggedIn() {
       >
         <Stack.Screen name="client" component={ClientBottomNavigator} />
         <Stack.Screen name="my-account" component={MyAccountScreen} />
-        {/* <Stack.Screen name="personal-informations" component={PersonalInformationScreen} />
-        <Stack.Screen name="previous-orders" component={PreviousOrderScreen} /> */}
+        <Stack.Screen name="personal-informations" component={PersonalInformationScreen} />
+        <Stack.Screen name="previous-orders" component={PreviousOrderScreen} /> 
         <Stack.Screen name="home" component={SpecificCategoryScreen} />
         <Stack.Screen name="details" component={ProductDetailScreen} />
         <Stack.Screen name="other-categories" component={OtherCategoriesScreen} />

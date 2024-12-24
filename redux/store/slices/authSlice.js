@@ -10,7 +10,7 @@ const authSlice = createSlice({
   },
   reducers: {
     signIn(state, action) {
-      state.user = action.payload;
+      state.user = action.payload; // Function Input
       state.isLoggedIn = true;
     },
     signOut(state) {
@@ -18,7 +18,7 @@ const authSlice = createSlice({
       state.isLoggedIn = false;
     },
     setLanguage(state, action) {
-      state.language = action.payload;
+      state.language = action.payload; // Function Input
     },
   },
 });

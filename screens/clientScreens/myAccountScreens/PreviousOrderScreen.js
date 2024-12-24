@@ -46,7 +46,7 @@ const PreviousOrderScreen = () => {
             <FlatList
                 data={previousOrdersData}
                 renderItem={renderItem}
-                keyExtractor={(item) => item.id}
+                keyExtractor={(item) => item.orderNumber}
             />
         </ScreenWrapper>
     );

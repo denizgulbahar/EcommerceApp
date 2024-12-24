@@ -33,21 +33,19 @@ const SpecificCategoryScreen = ({ route, navigation }) => {
     if(data) {
       setProducts(data.products) 
     }
-  })
+  },[data])
+  
   return (
     <ScreenWrapper type="flatlist">
       <FlatList
         ListHeaderComponent={
           <>
-              <View>
-                <InputOriginal  
-                  label="Ürün Ara"
-                  icon={() => 
-                  <Feather name="search" size={24} color="black" />
-                  }
-                  onChangeText={(v) => setSearch(v)}
-                />
-              </View>
+            <InputOriginal  
+              label="Ürün Ara"
+              icon={<Feather name="search" size={24} color="black" /> }
+              value={search}
+              onChangeText={(v) => setSearch(v)}
+            />
           </>
         }
         data={products}

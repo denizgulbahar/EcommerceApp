@@ -6,9 +6,12 @@ import { ScreenWrapper } from '../../../components/wrappers/screenWrapper';
 import { Header } from '../../../components/header/header';
 import { myProfileData } from '../../../data/myProfileData';
 import ExitButton from '../../../redux/feature/auth/exitButton';
+import { useSelector } from 'react-redux';
 
 const MyAccountScreen = ({ navigation }) => {
-
+    const user = useSelector((state) => state.auth.user)
+    const logged = useSelector((state) => state.auth.isLoggedIn)
+    console.log("user:",user)
     const ButtonTitleComponent = ({ icon, text }) => (
         <View style={styles.buttonTitleView}>
             {icon}
@@ -17,8 +20,8 @@ const MyAccountScreen = ({ navigation }) => {
         </View>
     )
     const handleNavigation = (field) => {
-        // navigation.navigate(field.route)
-        console.log("navigation:", field.route);
+        navigation.navigate(field.route)
+        // console.log("navigation:", field.route);
     }
     return (
         <ScreenWrapper>
