@@ -1,7 +1,7 @@
 import React from 'react';
 import { StatusBar, Dimensions, View } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
-import LanguageButton from '../../../components/buttons/languageButton'; 
+import LanguageButton from '../../../redux/feature/auth/languageButton'; 
 import ClientBottomNavigator from '../../bottomNavigator/ClientBottomNavigator'; 
 import MyAccountScreen from '../../../screens/clientScreens/myAccountScreens/MyAccountScreen';
 import SpecificCategoryScreen from '../../../screens/clientScreens/homeScreens/SpecificCategoryScreen';

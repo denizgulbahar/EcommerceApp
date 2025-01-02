@@ -10,11 +10,11 @@ import store from './redux/store/store';
 export default function App() {
   return (
     <Provider store={store}>
-    <PaperProvider>
-      <NavigationContainer>
-        <MainStack />
-      </NavigationContainer>
-    </PaperProvider>
+      <PaperProvider>
+        <NavigationContainer>
+          <MainStack />
+        </NavigationContainer>
+      </PaperProvider>
     </Provider>
   );
 }

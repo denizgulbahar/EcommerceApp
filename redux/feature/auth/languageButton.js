@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { View, StyleSheet, Image } from "react-native";
 import { useDispatch, useSelector } from 'react-redux';
-import { setLanguage } from '../../redux/store/slices/authSlice'; 
-import { color } from "../../styles/color";
-import ButtonOriginal from "./buttonOriginal";
-import i18next from "../../services/i18next";
+import { setLanguage } from '../../store/slices/authSlice'; 
+import { color } from "../../../styles/color";
+import ButtonOriginal from "../../../components/buttons/buttonOriginal";
+import i18next from "../../../services/i18next";
 const LanguageButton = () => {
     const [showSecondButton, setShowSecondButton] = useState(false);
     
@@ -14,7 +14,7 @@ const LanguageButton = () => {
 
     const ImageTR = () => (
         <Image
-            source={require('../../assets/language/tr.png')}
+            source={require('../../../assets/language/tr.png')}
             resizeMode="cover"
             style={styles.languageImage}
         />
@@ -22,7 +22,7 @@ const LanguageButton = () => {
 
     const ImageENG = () => (
         <Image
-            source={require('../../assets/language/eng.png')}
+            source={require('../../../assets/language/eng.png')}
             resizeMode="cover"
             style={styles.languageImage}
         />
@@ -64,9 +64,9 @@ const LanguageButton = () => {
                 {image1}
             </ButtonOriginal>
             {showSecondButton && (
-                <ButtonOriginal buttonStyle={styles.languageButton} onPress={clickSecondButton}>
-                    {image2}
-                </ButtonOriginal>
+            <ButtonOriginal buttonStyle={styles.languageButton} onPress={clickSecondButton}>
+                {image2}
+            </ButtonOriginal>
             )}
         </View>
     );
@@ -75,8 +75,8 @@ const LanguageButton = () => {
 const styles = StyleSheet.create({
     ButtonsView: {
         position: "absolute",
-        top: -20, 
-        right: 20,
+        top: -17, 
+        right: 10,
         paddingHorizontal: 3,
         paddingVertical: 1.2,
         borderColor: color.white,
@@ -84,12 +84,13 @@ const styles = StyleSheet.create({
     languageButton: {
         justifyContent: "center",
         alignItems: "center",
-        marginVertical: 2,
+        marginVertical: 5,
+        backgroundColor: "transparent",
     },
     languageImage: {
-        width: 35,
-        height: 35,
-        borderRadius: 18,
+        width: 40,
+        height: 40,
+        borderRadius: 20,
         padding: 7
     }
 });

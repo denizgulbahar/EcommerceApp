@@ -1,7 +1,7 @@
 import React from 'react';
 import { StatusBar, Dimensions, View } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
-import LanguageButton from '../../../components/buttons/languageButton'; 
+import LanguageButton from '../../../redux/feature/auth/languageButton'; 
 import LoginScreen from '../../../screens/authScreens/LoginScreen'; 
 import ForgotPasswordScreen from '../../../screens/authScreens/ForgotPasswordScreen'; 
 
@@ -16,14 +16,14 @@ function MainStackLoggedOut() {
       <Stack.Navigator
         initialRouteName="login"
         screenOptions={{
-          headerShown: false,
+          headerStyle: { backgroundColor: '#4FACD7' },
+          headerTitle: () => {},
           headerRight: () => (
             <View
               style={{
-                flexDirection: 'row',
-                alignItems: 'center',
+                flex: 1,
+                alignItems: 'flex-end',
                 justifyContent: 'center',
-                marginRight: width / 2 - 115,
               }}
             >
               <LanguageButton />

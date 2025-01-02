@@ -10,18 +10,18 @@ export const MyAccountContainer = ({ accountInputs, setAccountInputs }) => {
         setAccountInputs(tempAddress);
     }
     const accountFields = [
-        { key: 'name', label: t("name")},
-        { key: 'surname', label: t("surname")},
-        { key: 'password', label: t("password")},
-        { key: 'email', label: t("email")},
-        { key: 'telNo', label: t("phoneNumber")},
+        { key: 'name', placeholder: t("name")},
+        { key: 'surname', placeholder: t("surname")},
+        { key: 'password', placeholder: t("password")},
+        { key: 'email', placeholder: t("email")},
+        { key: 'telNo', placeholder: t("phoneNumber")},
       ];
     return(
         <View style={{ marginTop: 20 }}>
             {accountFields.map((field) => (
                 <InputOriginal
                     key={field.key}
-                    label={field.label}
+                    placeholder={field.placeholder}
                     value={accountInputs[field.key]}
                     onChangeText={(v) => setAccountsHandler(field.key, v)}
                 />

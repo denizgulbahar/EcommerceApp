@@ -6,12 +6,13 @@ import InputOriginal from '../../components/input/inputOriginal';
 import { Header } from '../../components/header/header';
 import { ScreenWrapper } from '../../components/wrappers/screenWrapper';
 import LoginButton from '../../redux/feature/auth/loginButton';
+import { useTranslation } from 'react-i18next';
 
 const LoginScreen = ({ navigation }) => {
     const [isLoading, setIsLoading] = useState(false); 
     const [email, setEmail] = useState("deniz.gulbahar@gmail.com");
     const [password, setPassword] = useState('Ecommerce123');
-
+    const { t } = useTranslation()
     const handleForgotPassword = () => {
         navigation.navigate('password');
     };
@@ -20,49 +21,49 @@ const LoginScreen = ({ navigation }) => {
     }
     return (
         <ScreenWrapper>
-            {isLoading ? (
-                <Loading/> 
-            ) : (
-                <>
-                <Image
-                        source={require('../../assets/logo/logo.png')}
-                        style={[styles.logo]}
-                        resizeMode="contain"
-                    />      
-                    <Header text="Welcome to Ecommerce APP" />
-                    <InputOriginal
-                        icon="email"
-                        rightIcon="checkbox-marked-circle"
-                        label="Email"
-                        value={email}
-                        onChangeText={setEmail}
-                    />
-                    <InputOriginal
-                        icon="email"
-                        label="Password"
-                        kind="password"
-                        keyboard="password"
-                        secureText="true"
-                        value={password}
-                        onChangeText={setPassword}
-                    />
-                    <View style={{ alignItems: "flex-end" }}>
-                        <ButtonOriginal
-                            buttonStyle={{
-                                backgroundColor: "transparent",
-                                shadowOpacity: 0,
-                            }}
-                            title="Şifremi Unuttum?"
-                            onPress={handleForgotPassword}
-                        />
-                    </View>
-                    <LoginButton 
-                        email={email}
-                        password={password}
-                        updateLoading={updateLoading} 
-                    />
-                </>
-            )}
+        {isLoading ? (
+            <Loading/> 
+        ) : (
+            <>
+            <Image
+                source={require('../../assets/logo/logo.png')}
+                style={[styles.logo]}
+                resizeMode="contain"
+            />      
+            <Header text={t("welcomeApp")} />
+            <InputOriginal
+                icon="email"
+                rightIcon="checkbox-marked-circle"
+                placeholder={t("email")}
+                value={email}
+                onChangeText={setEmail}
+            />
+            <InputOriginal
+                icon="email"
+                placeholder={t("password")}
+                kind="password"
+                keyboard="password"
+                secureText="true"
+                value={password}
+                onChangeText={setPassword}
+            />
+            <View style={{ alignItems: "flex-end" }}>
+                <ButtonOriginal
+                    buttonStyle={{
+                        backgroundColor: "transparent",
+                        shadowOpacity: 0,
+                    }}
+                    title="Şifremi Unuttum?"
+                    onPress={handleForgotPassword}
+                />
+            </View>
+                <LoginButton 
+                    email={email}
+                    password={password}
+                    updateLoading={updateLoading} 
+                />
+            </>
+        )}
         </ScreenWrapper>
     );
 };

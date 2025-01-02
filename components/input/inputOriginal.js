@@ -3,7 +3,6 @@ import { StyleSheet } from 'react-native';
 import { color } from '../../styles/color';
 import { useCallback, useState } from 'react';
 const InputOriginal = ({
-  label = "",
   icon = "email",
   rightIcon = false,
   kind = "",
@@ -31,7 +30,6 @@ const InputOriginal = ({
   
   return (
     <TextInput
-        label={label}
         style={[ styles.input, inputStyle ]}
         value={value}
         onChangeText={onChangeText}

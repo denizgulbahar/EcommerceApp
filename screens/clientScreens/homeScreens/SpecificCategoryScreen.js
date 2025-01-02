@@ -41,7 +41,7 @@ const SpecificCategoryScreen = ({ route, navigation }) => {
         ListHeaderComponent={
           <>
             <InputOriginal  
-              label="Ürün Ara"
+              placeholder="Ürün Ara"
               icon={<Feather name="search" size={24} color="black" /> }
               value={search}
               onChangeText={(v) => setSearch(v)}

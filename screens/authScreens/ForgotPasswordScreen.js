@@ -24,18 +24,18 @@ const ForgotPasswordScreen = ({ navigation }) => {
     
     return (
         <View style={styles.container}>
-            <View style={{ height:400}}>
+            <View style={{ height: 400 }}>
                 <View style={{ alignSelf: "flex-start", marginBottom: 30 }}>
                     <Header text="Şifreni Değiştir" />
                 </View>
                 <InputOriginal 
-                    label={t("password")}
+                    placeholder={t("password")}
                     keyboard="password" 
                     value={password} 
                     onChangeText={setPassword} 
                 />
                 <InputOriginal 
-                    label={t("confirmPassword")}
+                    placeholder={t("confirmPassword")}
                     keyboard="password" 
                     value={confirmPassword} 
                     onChangeText={setConfirmPassword} 

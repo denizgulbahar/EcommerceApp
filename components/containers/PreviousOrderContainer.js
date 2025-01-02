@@ -11,11 +11,11 @@ export const PreviousOrderContainer = ({ values }) => {
     const detailedTexts = ["teslimatAdresi", "teslimatAdSoyad", "teslimatTel", "odemeTipi"]
     const [detailed, setDetailed] = useState(false)
     const textFields = texts.map(input => ({
-        label: t(input),
+        placeholder: t(input),
         value: values[input],
     }));
     const detailedFields = detailedTexts.map(input => ({
-        label: t(input),
+        placeholder: t(input),
         value: values[input],
     }));
     useEffect(() => {
@@ -23,8 +23,8 @@ export const PreviousOrderContainer = ({ values }) => {
     },[])
     const FieldComponent = ({ field }) => (
         <View style={{ flex: 1 ,flexDirection: "row" }} >
-            <Text style={styles.inputLabel}>
-                {field.label+" : " + field.value}
+            <Text style={styles.inputPlaceholder}>
+                {field.placeholder+" : " + field.value}
             </Text>
         </View> 
     )
@@ -59,7 +59,7 @@ export const PreviousOrderContainer = ({ values }) => {
     )
 }
 const styles = StyleSheet.create({
-    inputLabel: {
+    inputPlaceholder: {
         textAlign: "left",
         fontSize: width > 500 ? 22 : 18,
         padding: 7,
