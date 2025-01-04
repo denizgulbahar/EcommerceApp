@@ -49,10 +49,6 @@ const LoginScreen = ({ navigation }) => {
             />
             <View style={{ alignItems: "flex-end" }}>
                 <ButtonOriginal
-                    buttonStyle={{
-                        backgroundColor: "transparent",
-                        shadowOpacity: 0,
-                    }}
                     title="Şifremi Unuttum?"
                     onPress={handleForgotPassword}
                 />

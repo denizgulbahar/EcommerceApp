@@ -23,18 +23,6 @@ function MainStackLoggedIn() {
         initialRouteName="client"
         screenOptions={{
           headerShown: false,
-          headerRight: () => (
-            <View
-              style={{
-                flexDirection: 'row',
-                alignItems: 'center',
-                justifyContent: 'center',
-                marginRight: width / 2 - 115,
-              }}
-            >
-              <LanguageButton />
-            </View>
-          ),
         }}
       >
         <Stack.Screen name="client" component={ClientBottomNavigator} />

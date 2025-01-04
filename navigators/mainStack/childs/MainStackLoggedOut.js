@@ -1,5 +1,5 @@
 import React from 'react';
-import { StatusBar, Dimensions, View } from 'react-native';
+import { StatusBar, View } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import LanguageButton from '../../../redux/feature/auth/languageButton'; 
 import LoginScreen from '../../../screens/authScreens/LoginScreen'; 
@@ -8,7 +8,6 @@ import ForgotPasswordScreen from '../../../screens/authScreens/ForgotPasswordScr
 const Stack = createStackNavigator();
 
 function MainStackLoggedOut() {
-  const width = Dimensions.get('window').width;
 
   return (
     <>

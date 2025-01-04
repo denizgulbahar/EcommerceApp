@@ -36,7 +36,6 @@ export const ColorSelector = ({ selectedColor, updateColor }) => {
             {colorsArray.map((color, index) => (
             <ButtonOriginal
                 key={index}
-                buttonStyle={{ backgroundColor: "transparent" }}
                 onPress={() => updateColor(color)}
             >
                 <View

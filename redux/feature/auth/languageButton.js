@@ -1,81 +1,50 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { View, StyleSheet, Image } from "react-native";
 import { useDispatch, useSelector } from 'react-redux';
 import { setLanguage } from '../../store/slices/authSlice'; 
 import { color } from "../../../styles/color";
 import ButtonOriginal from "../../../components/buttons/buttonOriginal";
 import i18next from "../../../services/i18next";
-const LanguageButton = () => {
-    const [showSecondButton, setShowSecondButton] = useState(false);
-    
-    // Access current language from Redux store
-    const currentLanguage = useSelector(state => state.auth.language);
+
+const LanguageButton = ({ viewStyle }) => {
+    const reduxLanguage = useSelector(state => state.auth.language); // Get language from Redux
     const dispatch = useDispatch();
+    
+    const [localLanguage, setLocalLanguage] = useState(reduxLanguage); // Local state for immediate update
 
-    const ImageTR = () => (
-        <Image
-            source={require('../../../assets/language/tr.png')}
-            resizeMode="cover"
-            style={styles.languageImage}
-        />
-    );
-
-    const ImageENG = () => (
-        <Image
-            source={require('../../../assets/language/eng.png')}
-            resizeMode="cover"
-            style={styles.languageImage}
-        />
-    );
-
-    const [image1, setImage1] = useState(null);
-    const [image2, setImage2] = useState(null);
-
-    const changeLng = (lng) => {
-        i18next.changeLanguage(lng);
-        dispatch(setLanguage(lng)); // Update language in Redux state
+    const images = {
+        tr: require('../../../assets/language/tr.png'),
+        en: require('../../../assets/language/eng.png')
     };
 
-    const clickFirstButton = () => {
-        setShowSecondButton(!showSecondButton);
+    const toggleLanguage = () => {
+        const newLanguage = localLanguage === 'tr' ? 'en' : 'tr';
+        setLocalLanguage(newLanguage); // Immediate update
+        i18next.changeLanguage(newLanguage).then(() => {
+            dispatch(setLanguage(newLanguage)); // Sync Redux state
+        });
     };
-
-    const clickSecondButton = () => {
-        const newLang = currentLanguage === 'tr' ? 'en' : 'tr';
-        changeLng(newLang);
-        setShowSecondButton(false);
-    };
-
-    // Update images based on current language from Redux
-    useEffect(() => {
-        if (currentLanguage === 'tr') {
-            setImage1(<ImageTR />);
-            setImage2(<ImageENG />);
-        } else {
-            setImage1(<ImageENG />);
-            setImage2(<ImageTR />);
-        }
-    }, [currentLanguage]);
 
     return (
-        <View style={styles.ButtonsView}>
-            <ButtonOriginal buttonStyle={styles.languageButton}
-                onPress={clickFirstButton}>
-                {image1}
+        <View style={[styles.ButtonsView, viewStyle]}>
+            <ButtonOriginal buttonStyle={styles.languageButton} onPress={toggleLanguage}>
+                <Image
+                    source={images[localLanguage]}
+                    resizeMode="cover"
+                    style={styles.languageImage}
+                />
             </ButtonOriginal>
-            {showSecondButton && (
-            <ButtonOriginal buttonStyle={styles.languageButton} onPress={clickSecondButton}>
-                {image2}
-            </ButtonOriginal>
-            )}
         </View>
     );
 };
 
 const styles = StyleSheet.create({
     ButtonsView: {
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "center",
         position: "absolute",
-        top: -17, 
+        top: -10, 
         right: 10,
         paddingHorizontal: 3,
         paddingVertical: 1.2,
@@ -84,14 +53,12 @@ const styles = StyleSheet.create({
     languageButton: {
         justifyContent: "center",
         alignItems: "center",
-        marginVertical: 5,
         backgroundColor: "transparent",
     },
     languageImage: {
         width: 40,
         height: 40,
         borderRadius: 20,
-        padding: 7
     }
 });
 

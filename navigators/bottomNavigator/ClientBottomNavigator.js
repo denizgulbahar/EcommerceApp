@@ -5,7 +5,7 @@ import { color } from '../../styles/color'
 import HomeTopNavigator from './homeTopNavigator/HomeTopNavigator';
 import FavouriteScreen from '../../screens/clientScreens/FavouriteScreen';
 import ShoppingBasketScreen from '../../screens/clientScreens/ShoppingCartScreen';
-import MyAccountScreen from '../../screens/clientScreens/myAccountScreens/MyAccountScreen';
+import MyAccountStack from './MyAccountStack';
 
 const Tab = createBottomTabNavigator();
 const ClientBottomNavigator = () => {
@@ -26,7 +26,7 @@ const ClientBottomNavigator = () => {
                             iconName = 'heart';
                         } else if (route.name === 'my-cart') {
                             iconName = 'shopping-basket';
-                        } else if (route.name === 'my-account') {
+                        } else if (route.name === 'account-stack') {
                             iconName = 'user-circle-o';
                         }
                         return (
@@ -42,7 +42,7 @@ const ClientBottomNavigator = () => {
                 <Tab.Screen name="home" options={{ tabBarLabel: "AnaSayfa", unmountOnBlur: true }} component={HomeTopNavigator} />
                 <Tab.Screen name="favourites" options={{ tabBarLabel: "Favorilerim", unmountOnBlur: true }} component={FavouriteScreen} />
                 <Tab.Screen name="my-cart" options={{ tabBarLabel: "Sepetim", unmountOnBlur: true }} component={ShoppingBasketScreen} />
-                <Tab.Screen name="my-account" options={{ tabBarLabel: "Hesabım", unmountOnBlur: true  }} component={MyAccountScreen} />
+                <Tab.Screen name="account-stack" options={{ tabBarLabel: "Hesabım", unmountOnBlur: true  }} component={MyAccountStack} />
             </Tab.Navigator>
         </SafeAreaView>
     );

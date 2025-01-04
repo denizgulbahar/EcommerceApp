@@ -34,7 +34,6 @@ const styles = StyleSheet.create({
     profileButtons: { 
         marginTop: 10, 
         height: 60,
-        backgroundColor:"transparent"
     },
      buttonTitleView: {
         width:"100%",

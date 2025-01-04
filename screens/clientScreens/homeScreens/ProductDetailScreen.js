@@ -5,8 +5,7 @@ import { ScreenWrapper } from "../../../components/wrappers/screenWrapper";
 import ProductDetailsContainer from "../../../redux/feature/cart/productDetailsContainer";
 import ImageLoader from "../../../components/imageLoader";
 import { useState } from "react";
-import ButtonOriginal from "../../../components/buttons/buttonOriginal";
-import { IconButton } from "react-native-paper";
+import { BackButton } from "../../../components/buttons/backButton";
 
 const ProductDetailScreen = ({ route, navigation }) => {
   const { item } = route.params
@@ -17,14 +16,7 @@ const ProductDetailScreen = ({ route, navigation }) => {
   }
   return (
     <ScreenWrapper>
-      <View style={styles.iconButtonView}>
-      <IconButton
-        icon="arrow-left"
-        size={24}
-        iconColor={color.white}
-        onPress={() => navigation.goBack()}
-      />
-      </View>
+      <BackButton navigation={navigation} absolute />
       <ImageLoader 
         uri={item.image} 
         loading={loading}
@@ -46,28 +38,10 @@ const ProductDetailScreen = ({ route, navigation }) => {
 export default ProductDetailScreen;
 
 const styles = StyleSheet.create({
-  iconButtonView:{
-    position: "absolute",
-    zIndex: 1,
-    top: 20,
-    left: 10,
-    width:40, 
-    height: 40, 
-    borderRadius: 20, 
-    backgroundColor: color.secondColor, 
-    justifyContent: "center", 
-    alignItems: "center" 
-  },
   productContainer: {
     flex: 1,
     flexDirection: "row",
     justifyContent: "space-between",
-  },
-  container: {
-    flex: 1,
-  },
-  header: {
-    padding: 15,
   },
   imageStyle: {
     marginTop: 10,

@@ -33,14 +33,7 @@ const styles = StyleSheet.create({
   button: {
     height: 50,
     borderWidth: 0,
-    backgroundColor: color.white,
-    shadowColor: color.black,
-    shadowOffset: {
-        width: 0,
-        height: 0,
-    },
-    shadowOpacity: 0.15,
-    shadowRadius: 2,
+    backgroundColor: "transparent",
     borderRadius: 12,
     padding: 15,
     justifyContent: "center",

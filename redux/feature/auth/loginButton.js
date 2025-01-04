@@ -2,7 +2,7 @@ import { Alert } from "react-native";
 import { useDispatch } from "react-redux";
 import ButtonOriginal from "../../../components/buttons/buttonOriginal";
 import { signIn } from "../../store/slices/authSlice"
-
+import { color } from "../../../styles/color";
 const LoginButton = ({ email, password, updateLoading }) => {
 
     const dispatch = useDispatch()
@@ -37,7 +37,7 @@ const LoginButton = ({ email, password, updateLoading }) => {
         <ButtonOriginal 
             title="LOGIN"
             onPress={handleLogin} 
-            buttonStyle={{ marginTop: 20 }} 
+            buttonStyle={{ marginTop: 20, backgroundColor: color.white }} 
         />
     )
 }

@@ -1,14 +1,11 @@
-import {
-  FlatList,
-  View,
-} from "react-native";
-import React, { useEffect, useState } from "react";
+import { FlatList } from "react-native";
+import React, { useEffect, useState, useCallback } from "react";
 import ProductCard from "../../../components/ProductCard";
 import InputOriginal from "../../../components/input/inputOriginal";
 import { Feather } from "@expo/vector-icons";
 import { ScreenWrapper } from "../../../components/wrappers/screenWrapper";
 const SpecificCategoryScreen = ({ route, navigation }) => {
-  
+
   const { data } = route.params
   const [products, setProducts] = useState([]);
   const [search, setSearch] = useState("")
@@ -30,10 +27,21 @@ const SpecificCategoryScreen = ({ route, navigation }) => {
     );
   };
   useEffect(() => {
-    if(data) {
+    // Optional chaining to avoid potential errors when data is undefined or null
+    if(data?.products) { 
       setProducts(data.products) 
     }
   },[data])
+
+  const filteredProducts = useCallback(() => {
+    if (search === "") {
+      return products; // Show all products when search is empty
+    }
+    return products.filter((prod) =>
+      prod.title.toLowerCase().includes(search.toLowerCase())
+    );
+  }, [products, search]);
+  
   
   return (
     <ScreenWrapper type="flatlist">
@@ -48,7 +56,7 @@ const SpecificCategoryScreen = ({ route, navigation }) => {
             />
           </>
         }
-        data={products}
+        data={filteredProducts()}
         numColumns={2}
         renderItem={({ item }) => (
           <ProductCard

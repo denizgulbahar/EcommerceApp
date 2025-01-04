@@ -1,9 +1,11 @@
 import React from 'react';
-import { View, Text, FlatList } from 'react-native';
+import { FlatList } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { PreviousOrderContainer } from '../../../components/containers/PreviousOrderContainer';
 import { ScreenWrapper } from '../../../components/wrappers/screenWrapper';
-const PreviousOrderScreen = () => {
+import { Header } from '../../../components/header/header';
+import { BackButton } from '../../../components/buttons/backButton';
+const PreviousOrderScreen = ({ navigation }) => {
     const {t} = useTranslation()
     const previousOrdersData = [
       {
@@ -43,6 +45,8 @@ const PreviousOrderScreen = () => {
      );
     return (
         <ScreenWrapper type="flatlist">
+            <BackButton navigation={navigation} />
+            <Header text="Geçmiş Siparişlerim" />
             <FlatList
                 data={previousOrdersData}
                 renderItem={renderItem}
