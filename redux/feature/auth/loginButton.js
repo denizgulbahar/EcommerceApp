@@ -3,8 +3,9 @@ import { useDispatch } from "react-redux";
 import ButtonOriginal from "../../../components/buttons/buttonOriginal";
 import { signIn } from "../../store/slices/authSlice"
 import { color } from "../../../styles/color";
-const LoginButton = ({ email, password, updateLoading }) => {
-
+import { useTranslation } from "react-i18next";
+const LoginButton = ({ email, password, title, updateLoading }) => {
+    const { t } = useTranslation()
     const dispatch = useDispatch()
     const mockCredentialsValid = (email, password) => {
         return email === "deniz.gulbahar@gmail.com" && password === "Ecommerce123";
@@ -23,19 +24,19 @@ const LoginButton = ({ email, password, updateLoading }) => {
             try {
                 dispatch(signIn(user))
             } catch (error) {
-                console.error('Login başarısız. Lütfen tekrar deneyin.', error);
-                Alert.alert('Login başarısız. Lütfen tekrar deneyin.');
+                console.error(t("loginDispatchFail"), error);
+                Alert.alert(t("loginDispatchFail"));
             } finally {
                 updateLoading(false);
             }
         } else {
-            Alert.alert('Kullanıcı Adı yada Parola Hatalı');
+            Alert.alert(t("loginGeneralFail"));
         }
     };
 
     return (
         <ButtonOriginal 
-            title="LOGIN"
+            title={title}
             onPress={handleLogin} 
             buttonStyle={{ marginTop: 20, backgroundColor: color.white }} 
         />

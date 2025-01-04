@@ -1,11 +1,10 @@
 import { ScreenWrapper } from "../../components/wrappers/screenWrapper";
 import { ShoppingCartContainer } from "../../redux/feature/cart/shoppingCartContainer";
 
-const ShoppingCartScreen = () => {
-
+const ShoppingCartScreen = ({ navigation }) => {
   return (
     <ScreenWrapper type='flatlist'>
-      <ShoppingCartContainer />
+      <ShoppingCartContainer navigation={navigation} />
     </ScreenWrapper>
   );
 };

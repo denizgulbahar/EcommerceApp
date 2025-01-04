@@ -6,13 +6,13 @@ import { addToCartItem } from '../../store/slices/cartSlice';
 import { color } from '../../../styles/color';
 import { favouritedItems } from '../../../data/favouritedItems';
 // Header Component
-const FavouritesHeader = () => (
+const FavouritesHeader = ({ title }) => (
   <View style={styles.headerContainer}>
     <MaterialIcons name="favorite" color="red" size={50} style={styles.headerIcon} />
-    <Text style={styles.headerText}>Favoriler</Text>
+    <Text style={styles.headerText}>{title}</Text>
   </View>
 );
-export const FavouriteContainer = ({ navigation }) => {
+export const FavouriteContainer = ({ navigation, title }) => {
   const dispatch = useDispatch()
   
   // Function
@@ -25,7 +25,7 @@ export const FavouriteContainer = ({ navigation }) => {
     <FlatList
       data={favouritedItems}
       keyExtractor={(item) => item.id.toString()}
-      ListHeaderComponent={<FavouritesHeader />}
+      ListHeaderComponent={<FavouritesHeader title={title} />}
       renderItem={({ item }) => (
         <CartCard 
           item={item} 

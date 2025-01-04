@@ -5,10 +5,11 @@ import SpecificCategoryScreen from '../../../screens/clientScreens/homeScreens/S
 import dataTrending from "../../../data/topTabData/dataTrending.json";
 import dataMen from "../../../data/topTabData/dataMen.json";
 import dataWomen from "../../../data/topTabData/dataWomen.json";
+import { useTranslation } from 'react-i18next';
 
 const Tab = createMaterialTopTabNavigator()
 const HomeTopNavigator = ({ route }) => {
-
+    const { t } = useTranslation()
     return (
         <SafeAreaView style={{ flex: 1 }}>
             <Tab.Navigator
@@ -41,19 +42,19 @@ const HomeTopNavigator = ({ route }) => {
             >   
                 <Tab.Screen
                     name="trends"
-                    options={{ tabBarLabel: 'Trendler' }}
+                    options={{ tabBarLabel: t("trends") }}
                     component={SpecificCategoryScreen}
                     initialParams={{ data: dataTrending }}
                 />
                 <Tab.Screen
                     name="man"
-                    options={{ tabBarLabel: 'Erkek' }}
+                    options={{ tabBarLabel: t("man") }}
                     component={SpecificCategoryScreen}
                     initialParams={{ data: dataMen }}
                 />
                 <Tab.Screen
                     name="woman"
-                    options={{ tabBarLabel: 'Kadın' }}
+                    options={{ tabBarLabel: t("woman") }}
                     component={SpecificCategoryScreen}
                     initialParams={{ data: dataWomen }}
                 />

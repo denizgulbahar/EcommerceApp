@@ -3,14 +3,14 @@ import { color } from "../../../../styles/color";
 import { fonts } from "../../../../styles/fonts";
 import { usePayment } from "../utilities/hooks/usePayment";
 
-export const PaymentComponent = ({ cartItems, totalPrice }) => {
+export const PaymentComponent = ({ cartItems, totalPrice, paymentText }) => {
     // Custom Payment Hook
     const { cargoPrice, generalTotal } = usePayment({ cartItems, totalPrice })
 
     const paymentData = [
-        { title: 'Toplam:', value: totalPrice },
-        { title: 'Kargo:', value: cargoPrice },
-        { title: 'Genel Toplam:', value: generalTotal },
+        { title: paymentText["total"], value: totalPrice },
+        { title: paymentText["cargo"], value: cargoPrice },
+        { title: paymentText["generalTotal"], value: generalTotal },
     ];
 return(
     <View style={styles.paymentContainer}>
@@ -22,7 +22,7 @@ return(
         )
         )}
         <View style={styles.checkout}>
-            <Text style={styles.checkoutText}>Toplam</Text>
+            <Text style={styles.checkoutText}>{paymentText["total"]}</Text>
         </View>
     </View>
 )

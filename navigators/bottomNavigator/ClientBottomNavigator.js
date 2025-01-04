@@ -6,9 +6,11 @@ import HomeTopNavigator from './homeTopNavigator/HomeTopNavigator';
 import FavouriteScreen from '../../screens/clientScreens/FavouriteScreen';
 import ShoppingBasketScreen from '../../screens/clientScreens/ShoppingCartScreen';
 import MyAccountStack from './MyAccountStack';
+import { useTranslation } from 'react-i18next';
 
 const Tab = createBottomTabNavigator();
 const ClientBottomNavigator = () => {
+    const { t } = useTranslation()
     return (
         <SafeAreaView style={{ flex: 1 }}>
             <Tab.Navigator
@@ -39,18 +41,15 @@ const ClientBottomNavigator = () => {
                     },
                 })}
             >
-                <Tab.Screen name="home" options={{ tabBarLabel: "AnaSayfa", unmountOnBlur: true }} component={HomeTopNavigator} />
-                <Tab.Screen name="favourites" options={{ tabBarLabel: "Favorilerim", unmountOnBlur: true }} component={FavouriteScreen} />
-                <Tab.Screen name="my-cart" options={{ tabBarLabel: "Sepetim", unmountOnBlur: true }} component={ShoppingBasketScreen} />
-                <Tab.Screen name="account-stack" options={{ tabBarLabel: "Hesabım", unmountOnBlur: true  }} component={MyAccountStack} />
+                <Tab.Screen name="home" options={{ tabBarLabel: t("home"), unmountOnBlur: true }} component={HomeTopNavigator} />
+                <Tab.Screen name="favourites" options={{ tabBarLabel: t("myFavourites"), unmountOnBlur: true }} component={FavouriteScreen} />
+                <Tab.Screen name="my-cart" options={{ tabBarLabel: t("myCart"), unmountOnBlur: true }} component={ShoppingBasketScreen} />
+                <Tab.Screen name="account-stack" options={{ tabBarLabel: t("myAccount"), unmountOnBlur: true  }} component={MyAccountStack} />
             </Tab.Navigator>
         </SafeAreaView>
     );
 };
 const styles = StyleSheet.create({
-    tabBarItem: {
-        // can be customize later
-    },
     tabContainer: {
         height: 60,
         backgroundColor: color.softerMainColor,

@@ -51,26 +51,18 @@ const cartSlice = createSlice({
     },
     confirmCart: (state) => {
       // Simulate submission with an alert
-      const orderData = {
-        items: state.cartItems,
-        totalPrice: state.totalPrice,
-      };
-
+      const data = listOrderDetails(state)
       // First alert for submission confirmation
-      Alert.alert('Your cart has been successfully confirmed!', [
+      Alert.alert('Your cart has been successfully confirmed!', '', [
         {
           text: 'OK',
           onPress: () => {
-            // Use the helper function to list order details
-            const orderDetails = listOrderDetails(orderData.items, orderData.totalPrice);
-            Alert.alert('Order Data', orderDetails, [
+            Alert.alert(data, '', [
               {
                 text: 'OK',
-                onPress: () => {
+                onPress: async () => {
                   // Clear the cart after user confirms the order data alert
-                  state.cartItems = [];
-                  state.totalPrice = 0;
-                  AsyncStorage.removeItem('cart'); // Clear stored cart data
+                  await AsyncStorage.removeItem('cart'); // Clear stored cart data
                 },
               },
             ]);

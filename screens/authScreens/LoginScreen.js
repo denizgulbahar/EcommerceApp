@@ -49,13 +49,14 @@ const LoginScreen = ({ navigation }) => {
             />
             <View style={{ alignItems: "flex-end" }}>
                 <ButtonOriginal
-                    title="Şifremi Unuttum?"
+                    title={t("forgotPassword")}
                     onPress={handleForgotPassword}
                 />
             </View>
                 <LoginButton 
                     email={email}
                     password={password}
+                    title={t("login")}
                     updateLoading={updateLoading} 
                 />
             </>

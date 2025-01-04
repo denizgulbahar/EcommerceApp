@@ -13,12 +13,12 @@ const ForgotPasswordScreen = ({ navigation }) => {
     const handleResetPassword = () => {
         if(password && confirmPassword){
             if(password === confirmPassword){
-                Alert.alert("şifreniz yenilenmiştir.")
+                Alert.alert(t("acceptedPasswordMessage"))
             } else {
-                Alert.alert("şifreler uyuşmuyor, lütfen tekrar deneyin!")
+                Alert.alert(t("passwordMatchError"))
             }
         } else {
-            Alert.alert("Yeni şifreyi giriniz.")
+            Alert.alert(t("emptyPasswordError"))
         }
     };
     
@@ -26,7 +26,7 @@ const ForgotPasswordScreen = ({ navigation }) => {
         <View style={styles.container}>
             <View style={{ height: 400 }}>
                 <View style={{ alignSelf: "flex-start", marginBottom: 30 }}>
-                    <Header text="Şifreni Değiştir" />
+                    <Header text={t("changePassword")} />
                 </View>
                 <InputOriginal 
                     placeholder={t("password")}
@@ -47,7 +47,7 @@ const ForgotPasswordScreen = ({ navigation }) => {
                 />
                 <ButtonOriginal 
                     buttonStyle={{ marginTop: 20, width: 200, alignSelf: "center" }} 
-                    title={t("Ana Ekrana Dön")} 
+                    title={t("backHome")} 
                     onPress={ () => navigation.navigate("login")} 
                 />
             </View>

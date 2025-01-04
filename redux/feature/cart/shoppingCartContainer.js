@@ -1,12 +1,16 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useTransition } from 'react';
 import { FlatList } from 'react-native';
 import ButtonOriginal from '../../../components/buttons/buttonOriginal';
 import CartCard from './components/CartCard';
 import { PaymentComponent } from './components/PaymentComponent';
 import { useDispatch, useSelector } from 'react-redux';
 import { loadCartItems, deleteCartItem, confirmCart } from '../../store/slices/cartSlice';
-export const ShoppingCartContainer = () => {
-
+import { color } from '../../../styles/color';
+import { useTranslation } from 'react-i18next';
+export const ShoppingCartContainer = ({ navigation }) => {
+  // Translation 
+  const { t } = useTranslation()
+  // Dispatch to Redux Func Calls
   const dispatch = useDispatch()
 
   // Redux States
@@ -26,9 +30,14 @@ export const ShoppingCartContainer = () => {
     dispatch(deleteCartItem(id));
   };
   const handleConfirmCart = () => {
-    dispatch(confirmCart());
+      dispatch(confirmCart());
+      navigation.navigate("home")
   };
-
+  const paymentText = {
+    "total": t("total"),
+    "cargo": t("cargo"),
+    "generalTotal": t("generalTotal") 
+  }
   return (
     <FlatList
       style={{ marginBottom: 50 }}
@@ -39,12 +48,16 @@ export const ShoppingCartContainer = () => {
       ListFooterComponent={
         <>
           {/* Payment Info */}
-          <PaymentComponent cartItems={cartItems} totalPrice={totalPrice} />
+          <PaymentComponent 
+            cartItems={cartItems} 
+            totalPrice={totalPrice} 
+            paymentText={paymentText} 
+          />
           {/* Confirm Basket Button */}
           {hasItems && (
             <ButtonOriginal 
-              buttonStyle={{ margin: 40 }} 
-              title="Sepeti Onayla" 
+              buttonStyle={{ margin: 40, backgroundColor: color.white }} 
+              title={t("confirmCart")} 
               onPress={handleConfirmCart} 
             />
           )}

@@ -4,13 +4,14 @@ import ProductCard from "../../../components/ProductCard";
 import InputOriginal from "../../../components/input/inputOriginal";
 import { Feather } from "@expo/vector-icons";
 import { ScreenWrapper } from "../../../components/wrappers/screenWrapper";
+import { useTranslation } from "react-i18next";
 const SpecificCategoryScreen = ({ route, navigation }) => {
-
+  const { t } = useTranslation()
   const { data } = route.params
   const [products, setProducts] = useState([]);
   const [search, setSearch] = useState("")
   const passToProductDetails = (item) => {
-    console.log("item:",item)
+    // console.log("item:",item)
     navigation.navigate("details", { item });
   };
   const toggleFavorite = (item) => {
@@ -49,7 +50,7 @@ const SpecificCategoryScreen = ({ route, navigation }) => {
         ListHeaderComponent={
           <>
             <InputOriginal  
-              placeholder="Ürün Ara"
+              placeholder={t("searchProduct")}
               icon={<Feather name="search" size={24} color="black" /> }
               value={search}
               onChangeText={(v) => setSearch(v)}
