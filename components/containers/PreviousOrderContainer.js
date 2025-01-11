@@ -6,7 +6,7 @@ import ButtonOriginal from "../buttons/buttonOriginal";
 const width = Dimensions.get('window').width;
 export const PreviousOrderContainer = ({ values }) => {
     const {t} = useTranslation()
-    const texts = ["orderNumber", "orderDate", "orderProduct", "ÖdemeMiktarı"]
+    const texts = ["siparisNo", "siparisTarihi", "siparisÜrünü", "ÖdemeMiktarı"]
     const detailedTexts = ["teslimatAdresi", "teslimatAdSoyad", "teslimatTel", "odemeTipi"]
     const [detailed, setDetailed] = useState(false)
     const textFields = texts.map(input => ({

@@ -4,12 +4,12 @@ import { useDispatch } from "react-redux";
 import ButtonOriginal from "../../../components/buttons/buttonOriginal";
 import { color } from "../../../styles/color";
 import { signOut } from "../../store/slices/authSlice"
-const ExitButton = () => {
+const ExitButton = ({ title }) => {
     const dispatch = useDispatch()
     const ButtonTitleComponent = () => (
         <View style={styles.buttonTitleView}>
             <MaterialCommunityIcons name="exit-to-app" size={36} color={color.redstrong} />
-            <Text style={styles.header}>Çıkış Yap</Text>
+            <Text style={styles.header}>{title}</Text>
             <AntDesign name="caretright" size={24} color={color.black} style={{ opacity: 0.8 }} />
         </View>
     )

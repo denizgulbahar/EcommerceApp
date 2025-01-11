@@ -6,12 +6,11 @@ import { ScreenWrapper } from '../../../components/wrappers/screenWrapper';
 import { Header } from '../../../components/header/header';
 import { myProfileData } from '../../../data/myProfileData';
 import ExitButton from '../../../redux/feature/auth/exitButton';
-import { useSelector } from 'react-redux';
 import LanguageButton from '../../../redux/feature/auth/languageButton';
+import { useTranslation } from 'react-i18next';
 
 const MyAccountScreen = ({ navigation }) => {
-    const user = useSelector((state) => state.auth.user)
-    const logged = useSelector((state) => state.auth.isLoggedIn)
+    const { t } = useTranslation()
     // console.log("user:",user)
     const ButtonTitleComponent = ({ icon, text }) => (
         <View style={styles.buttonTitleView}>
@@ -26,22 +25,22 @@ const MyAccountScreen = ({ navigation }) => {
     }
     return (
         <ScreenWrapper>
-            <Header viewStyle={styles.headerView} text="Hesabım" />
+            <Header viewStyle={styles.headerView} text={t("myAccount")} />
             <View style={{ margin: 5 }}>
             {myProfileData.map(( field, index ) => (
                 <ButtonOriginal 
                   key={index}
                   buttonStyle={styles.profileButtons}
                   textStyle={{ flex: 1, color: color.black }}
-                  title={<ButtonTitleComponent icon={field.icon} text={field.text} />}
+                  title={<ButtonTitleComponent icon={field.icon} text={t(field.text)} />}
                   onPress={() => handleNavigation(field)}
                 /> 
             )
             )}
             </View>
-            <ExitButton />
+            <ExitButton title={t("exit")}/>
                 <View style={styles.changeLanguageView}>
-                    <Text style={styles.language}>Dil Değiştir</Text>
+                    <Text style={styles.language}>{t("changeLanguage")}</Text>
                     <LanguageButton viewStyle={styles.LanguageButton} />
                 </View>
         </ScreenWrapper>

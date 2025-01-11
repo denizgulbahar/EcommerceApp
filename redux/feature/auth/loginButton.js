@@ -17,7 +17,7 @@ const LoginButton = ({ email, password, title, updateLoading }) => {
             surname: "gülbahar",
             password: 'Ecommerce123',
             email: 'deniz.gulbahar@gmail.com',
-            telNo: '0552 481 18 16'
+            phoneNumber: '0552 481 18 16'
         }
         if (mockCredentialsValid(email, password)) {
             updateLoading(true);

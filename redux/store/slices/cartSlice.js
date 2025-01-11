@@ -16,7 +16,18 @@ export const loadCartItems = createAsyncThunk(
     return storedCartItems ? JSON.parse(storedCartItems) : [];
   }
 );
-
+// Define the async thunk for clearing the cart
+export const clearCartAsync = createAsyncThunk(
+  'cart/clearCartAsync',
+  async (_, { rejectWithValue }) => {
+    try {
+      await AsyncStorage.removeItem('cart'); // Clear the cart in AsyncStorage
+      return true;
+    } catch (error) {
+      return rejectWithValue('Failed to clear cart');
+    }
+  }
+);
 // Action always is an object
 // const exampleAction = {
 //   type: "cart/addToCartItem", // Slice.name + / + reducerName // İşlemin Türü
@@ -48,27 +59,6 @@ const cartSlice = createSlice({
       state.cartItems = state.cartItems.filter((item) => item.id !== id);
       calculateTotalPrice(state);
       AsyncStorage.setItem("cart", JSON.stringify(state.cartItems));
-    },
-    confirmCart: (state) => {
-      // Simulate submission with an alert
-      const data = listOrderDetails(state)
-      // First alert for submission confirmation
-      Alert.alert('Your cart has been successfully confirmed!', '', [
-        {
-          text: 'OK',
-          onPress: () => {
-            Alert.alert(data, '', [
-              {
-                text: 'OK',
-                onPress: async () => {
-                  // Clear the cart after user confirms the order data alert
-                  await AsyncStorage.removeItem('cart'); // Clear stored cart data
-                },
-              },
-            ]);
-          },
-        },
-      ]);
     },
   },
   extraReducers: (builder) => {

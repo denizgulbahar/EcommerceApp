@@ -1,23 +1,25 @@
-import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, Alert } from 'react-native';
+import React from 'react';
+import { View, StyleSheet, Alert } from 'react-native';
 import { MyAccountContainer } from '../../../redux/feature/auth/MyAccountContainer';
 import ButtonOriginal from '../../../components/buttons/buttonOriginal';
 import { ScreenWrapper } from '../../../components/wrappers/screenWrapper';
 import { Header } from '../../../components/header/header';
 import { BackButton } from '../../../components/buttons/backButton';
+import { useTranslation } from 'react-i18next';
 
 const PersonalInformationScreen = ({ navigation }) => {
     
+    const { t } = useTranslation()
     function handleUpdate() {
-        Alert.alert("güncellendi.")
+        Alert.alert(t("infoUpdated"))
     }
     function handleDelete() {
-        Alert.alert("hesap silindi.")
+        Alert.alert(t("accountDeleted"))
     }
     return (
         <ScreenWrapper>
             <BackButton navigation={navigation} />
-            <Header text="Kişisel Bilgilerim" />
+            <Header text={t("personalInformations")} />
             <MyAccountContainer />
             <View style={styles.buttonView}>
                 <ButtonOriginal 
@@ -29,19 +31,17 @@ const PersonalInformationScreen = ({ navigation }) => {
                         fontStyle: "normal", 
                         fontWeight: "bold",
                     }} 
-                    title="Bilgileri Güncelle" 
+                    title={t("updateInfo")}
                     onPress={handleUpdate} 
                 />
                 <ButtonOriginal 
-                    buttonStyle={{ 
-                        paddingVertical: 7 
-                    }} 
+                    buttonStyle={{ paddingVertical: 7 }} 
                     textStyle={{ 
                         fontSize: 15, 
                         fontStyle: "normal", 
                         fontWeight: "bold" 
                     }} 
-                    title="Hesabı Sil"
+                    title={t("deleteAccount")}
                     onPress={handleDelete} 
                 />
             </View>

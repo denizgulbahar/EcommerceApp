@@ -1,12 +1,13 @@
 import React, { useEffect, useTransition } from 'react';
-import { FlatList } from 'react-native';
+import { Alert, FlatList } from 'react-native';
 import ButtonOriginal from '../../../components/buttons/buttonOriginal';
 import CartCard from './components/CartCard';
 import { PaymentComponent } from './components/PaymentComponent';
 import { useDispatch, useSelector } from 'react-redux';
-import { loadCartItems, deleteCartItem, confirmCart } from '../../store/slices/cartSlice';
+import { loadCartItems, deleteCartItem, clearCartAsync } from '../../store/slices/cartSlice';
 import { color } from '../../../styles/color';
 import { useTranslation } from 'react-i18next';
+import listOrderDetails from './utilities/listOrderDetails';
 export const ShoppingCartContainer = ({ navigation }) => {
   // Translation 
   const { t } = useTranslation()
@@ -16,7 +17,7 @@ export const ShoppingCartContainer = ({ navigation }) => {
   // Redux States
   const cartItems = useSelector((state) => state.cart.cartItems)
   const totalPrice = useSelector((state) => state.cart.totalPrice)
-  
+  const state = useSelector((state) => state.cart)
   // Confirm Button Condition
   const hasItems = Array.isArray(cartItems) && cartItems.length > 0;
 
@@ -30,8 +31,36 @@ export const ShoppingCartContainer = ({ navigation }) => {
     dispatch(deleteCartItem(id));
   };
   const handleConfirmCart = () => {
-      dispatch(confirmCart());
-      navigation.navigate("home")
+    const data = listOrderDetails(state)
+    // First alert for cart confirmation
+    Alert.alert('Your cart has been successfully confirmed!', '', [
+      {
+        text: 'OK',
+        onPress: async () => {
+          // Show the order details alert after confirmation
+          Alert.alert(data, '', [
+            {
+              text: 'OK',
+              onPress: async () => {
+                try {
+                  // Dispatch the clearCartAsync thunk to clear the cart from AsyncStorage
+                  await dispatch(clearCartAsync()); // Dispatch the async thunk
+  
+                  // Show success alert
+                  Alert.alert('Cart has been cleared and order is confirmed!');
+                } catch (error) {
+                  // Show error alert
+                  Alert.alert('Failed to clear cart: ' + error.message);
+                } finally {
+                  // Navigate to the home screen
+                  navigation.navigate('home');
+                }
+              },
+            },
+          ]);
+        },
+      },
+    ]);
   };
   const paymentText = {
     "total": t("total"),
