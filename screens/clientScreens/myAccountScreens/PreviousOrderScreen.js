@@ -48,6 +48,7 @@ const PreviousOrderScreen = ({ navigation }) => {
             <BackButton navigation={navigation} />
             <Header text={t("previousOrders")} />
             <FlatList
+                style={{ flex: 1, marginVertical: 10 }}
                 data={previousOrdersData}
                 renderItem={renderItem}
                 keyExtractor={(item) => item.siparisNo}

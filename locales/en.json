@@ -51,6 +51,8 @@
   "odemeTipi": "Payment Type",
   "odemeMiktarı": "Payment Amount",
   "previousOrders": "My Past Orders",
+  "detail": "Detail",
+  "removeDetail": "Remove Detail",
   "profileSettings": "Profile Settings",
   "welcomeApp": "Welcome to Ecommerce APP",
   "addressDescription": "Address Description (if have)",

@@ -60,6 +60,8 @@
   "odemeTipi": "Ödeme Tipi",
   "odemeMiktarı": "Ödeme Miktarı",
   "previousOrders": "Gerçmiş Siparişlerim",
+  "detail": "Detay",
+  "removeDetail": "Detay Kaldır",
   "totalAmount": "Toplam Miktar",
   "profileSettings": "Profil Ayarları",
   "welcomeApp": "Ecommerce App'a Hoşgeldiniz",
