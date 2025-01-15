@@ -5,7 +5,7 @@ export default function FavouriteScreen ({ navigation }) {
 
   const { t } = useTranslation()
   return (
-    <ScreenWrapper type='flatlist'>
+    <ScreenWrapper>
       <FavouriteContainer navigation={navigation} title={t("myFavourites")}/>
     </ScreenWrapper>
   );

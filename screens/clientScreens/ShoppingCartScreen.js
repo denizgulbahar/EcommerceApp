@@ -3,7 +3,7 @@ import { ShoppingCartContainer } from "../../redux/feature/cart/shoppingCartCont
 
 const ShoppingCartScreen = ({ navigation }) => {
   return (
-    <ScreenWrapper type='flatlist'>
+    <ScreenWrapper>
       <ShoppingCartContainer navigation={navigation} />
     </ScreenWrapper>
   );

@@ -69,6 +69,7 @@ export const ShoppingCartContainer = ({ navigation }) => {
   }
   return (
     <FlatList
+      scrollEnabled={false}
       style={{ marginBottom: 50 }}
       data={cartItems}
       renderItem={({ item }) => (

@@ -44,10 +44,11 @@ const PreviousOrderScreen = ({ navigation }) => {
         <PreviousOrderContainer key={index} values={item} />
      );
     return (
-        <ScreenWrapper type="flatlist">
+        <ScreenWrapper>
             <BackButton navigation={navigation} />
             <Header text={t("previousOrders")} />
             <FlatList
+                scrollEnabled={false}
                 style={{ flex: 1, marginVertical: 10 }}
                 data={previousOrdersData}
                 renderItem={renderItem}

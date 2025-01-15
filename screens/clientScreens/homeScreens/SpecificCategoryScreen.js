@@ -45,7 +45,7 @@ const SpecificCategoryScreen = ({ route, navigation }) => {
   
   
   return (
-    <ScreenWrapper type="flatlist">
+    <ScreenWrapper>
       <FlatList
         ListHeaderComponent={
           <>
@@ -57,6 +57,7 @@ const SpecificCategoryScreen = ({ route, navigation }) => {
             />
           </>
         }
+        scrollEnabled={false}
         data={filteredProducts()}
         numColumns={2}
         renderItem={({ item }) => (

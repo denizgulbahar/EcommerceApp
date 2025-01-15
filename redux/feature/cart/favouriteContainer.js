@@ -23,6 +23,7 @@ export const FavouriteContainer = ({ navigation, title }) => {
 
   return (
     <FlatList
+      scrollEnabled={false}
       data={favouritedItems}
       keyExtractor={(item) => item.id.toString()}
       ListHeaderComponent={<FavouritesHeader title={title} />}
