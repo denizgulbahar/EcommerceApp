@@ -1,8 +1,10 @@
-import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Image, StyleSheet, Text, TouchableOpacity, View, Dimensions } from "react-native";
 import React, { useState } from "react";
 import { IconButton } from "react-native-paper";
 import { MaterialIcons } from "@expo/vector-icons";
 import Loading from "../components/loading/loading";
+
+const width = Dimensions.get('window').width;
 const ProductCard = ({ item, passToProductDetails, toggleFavorite }) => {
 
   const [loading, setLoading] = useState(true);
@@ -46,7 +48,7 @@ const styles = StyleSheet.create({
     margin: 10,
   },
   coverImage: {
-    height: 256,
+    height: width >= 500 ? 600 : 250,
     width: "100%",
     borderRadius: 20,
     position: "relative",

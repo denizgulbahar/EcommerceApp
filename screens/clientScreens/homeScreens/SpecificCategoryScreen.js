@@ -60,6 +60,7 @@ const SpecificCategoryScreen = ({ route, navigation }) => {
         scrollEnabled={false}
         data={filteredProducts()}
         numColumns={2}
+        showsVerticalScrollIndicator={false}
         renderItem={({ item }) => (
           <ProductCard
             item={item}
@@ -67,7 +68,6 @@ const SpecificCategoryScreen = ({ route, navigation }) => {
             toggleFavorite={toggleFavorite}
           />
         )}
-        showsVerticalScrollIndicator={false}
       />
     </ScreenWrapper>
   );

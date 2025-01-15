@@ -1,7 +1,9 @@
 import React from "react";
-import { Image, View, StyleSheet, ActivityIndicator } from "react-native";
+import { Image, View, StyleSheet, ActivityIndicator, Dimensions } from "react-native";
 import { color } from "../styles/color";
 
+
+const width = Dimensions.get('window').width;
 const ImageLoader = ({ uri, loading, updateLoading, imageStyle }) => {
   return (
     <View style={styles.imageContainer}>
@@ -29,9 +31,10 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   image: {
+    flex: 1,
     height: 150,
     width: 120,
-    resizeMode: "cover",
+    resizeMode: "stretch",
     borderRadius: 10,
   },
   activityIndicator: {
