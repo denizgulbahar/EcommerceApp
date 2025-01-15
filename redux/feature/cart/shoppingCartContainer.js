@@ -31,9 +31,10 @@ export const ShoppingCartContainer = ({ navigation }) => {
     dispatch(deleteCartItem(id));
   };
   const handleConfirmCart = () => {
-    const data = listOrderDetails(state)
+    const data = listOrderDetails({ state, t });
+  
     // First alert for cart confirmation
-    Alert.alert('Your cart has been successfully confirmed!', '', [
+    Alert.alert(t("cartConfirmed"), '', [
       {
         text: 'OK',
         onPress: async () => {
@@ -46,11 +47,16 @@ export const ShoppingCartContainer = ({ navigation }) => {
                   // Dispatch the clearCartAsync thunk to clear the cart from AsyncStorage
                   await dispatch(clearCartAsync()); // Dispatch the async thunk
   
+                  // Dispatch to delete all items from the cart
+                  state.cartItems.forEach(item => {
+                    dispatch(deleteCartItem(item.id));
+                  });
+  
                   // Show success alert
-                  Alert.alert('Cart has been cleared and order is confirmed!');
+                  Alert.alert(t("cartCleared"));
                 } catch (error) {
                   // Show error alert
-                  Alert.alert('Failed to clear cart: ' + error.message);
+                  Alert.alert(t("cartClearedFail") + error.message);
                 } finally {
                   // Navigate to the home screen
                   navigation.navigate('home');
@@ -62,6 +68,7 @@ export const ShoppingCartContainer = ({ navigation }) => {
       },
     ]);
   };
+  
   const paymentText = {
     "total": t("total"),
     "cargo": t("cargo"),
