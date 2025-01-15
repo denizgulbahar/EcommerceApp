@@ -39,7 +39,7 @@ const LoginScreen = ({ navigation }) => {
                 onChangeText={setEmail}
             />
             <InputOriginal
-                icon="email"
+                icon="lock"
                 placeholder={t("password")}
                 kind="password"
                 keyboard="password"
@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
         opacity: 0.8,
         height: 160,
         width: 320,
-        marginBottom: 30,
+        marginVertical: 30,
         alignSelf: "center",
     },
     singleButtonView: {

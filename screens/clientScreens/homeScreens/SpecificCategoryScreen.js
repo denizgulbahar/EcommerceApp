@@ -2,7 +2,7 @@ import { FlatList } from "react-native";
 import React, { useEffect, useState, useCallback } from "react";
 import ProductCard from "../../../components/ProductCard";
 import InputOriginal from "../../../components/input/inputOriginal";
-import { Feather } from "@expo/vector-icons";
+import { Feather, MaterialCommunityIcons } from "@expo/vector-icons";
 import { ScreenWrapper } from "../../../components/wrappers/screenWrapper";
 import { useTranslation } from "react-i18next";
 const SpecificCategoryScreen = ({ route, navigation }) => {
@@ -51,7 +51,7 @@ const SpecificCategoryScreen = ({ route, navigation }) => {
           <>
             <InputOriginal  
               placeholder={t("searchProduct")}
-              icon={<Feather name="search" size={24} color="black" /> }
+              icon="magnify"
               value={search}
               onChangeText={(v) => setSearch(v)}
             />

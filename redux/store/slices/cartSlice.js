@@ -1,8 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { Alert } from "react-native";
 import calculateTotalPrice from "../../feature/cart/utilities/calculateTotalPrice";
-import listOrderDetails from "../../feature/cart/utilities/listOrderDetails";
 
 // Async Storage persists data (e.g., cart state) across app restarts.
 // Redux state is in memory only, so we use Async Storage to restore it.
