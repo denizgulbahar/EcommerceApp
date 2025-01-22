@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import MainStackLoggedIn from './childs/MainStackLoggedIn';  // Component for logged-in users
-import MainStackLoggedOut from './childs/MainStackLoggedOut'; // Component for logged-out users
+import MainStackLoggedIn from '../navigators/mainStack/childs/MainStackLoggedIn';  // Component for logged-in users
+import MainStackLoggedOut from '../navigators/mainStack/childs/MainStackLoggedOut'; // Component for logged-out users
 
 const withUserState = () => {
   return (props) => {

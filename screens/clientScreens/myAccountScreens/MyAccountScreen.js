@@ -26,12 +26,12 @@ const MyAccountScreen = ({ navigation }) => {
     return (
         <ScreenWrapper>
             <Header viewStyle={styles.headerView} text={t("myAccount")} />
-            <View style={{ margin: 5 }}>
+            <View style={{ marginVertical: 5 }}>
             {myProfileData.map(( field, index ) => (
                 <ButtonOriginal 
                   key={index}
                   buttonStyle={styles.profileButtons}
-                  textStyle={{ flex: 1, color: color.black }}
+                  textStyle={{color: color.black }}
                   title={<ButtonTitleComponent icon={field.icon} text={t(field.text)} />}
                   onPress={() => handleNavigation(field)}
                 /> 
@@ -48,15 +48,15 @@ const MyAccountScreen = ({ navigation }) => {
 }
 const styles = StyleSheet.create({
     LanguageButton: {
-        position: "static", 
-        marginHorizontal: 20,
+        position: "relative",
+        marginLeft: 20,
         top: 0,
     },
     changeLanguageView: {
         flex: 1,
         flexDirection: "row",
         alignItems: "center",
-        justifyContent: "flex-end",
+        justifyContent: "center",
         marginVertical: 40,
     },
     language: {
@@ -76,7 +76,6 @@ const styles = StyleSheet.create({
     },
     profileButtons: { 
         marginTop: 10, 
-        flexDirection: "row", 
         height: 60,
     },
      buttonTitleView: {
