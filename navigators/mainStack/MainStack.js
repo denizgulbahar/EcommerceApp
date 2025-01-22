@@ -1,6 +1,11 @@
-import withUserState from '../../utilities/withUserState';
+import { useSelector } from 'react-redux';
+import MainStackLoggedIn from './childs/MainStackLoggedIn';
+import MainStackLoggedOut from './childs/MainStackLoggedOut';
 
-// Apply the HOC to conditionally render based on login state
-const MainStack = withUserState();
-
-export default MainStack;
+const MainStack = () => {
+    const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+  
+    return isLoggedIn ? <MainStackLoggedIn /> : <MainStackLoggedOut />
+  };
+  
+  export default MainStack;
