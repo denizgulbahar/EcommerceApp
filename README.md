@@ -64,9 +64,13 @@ To run this project locally, follow these steps:
    npx react-native run-ios       # For iOS
 
 Usage 🏃‍♂️
+
 Authentication: Login with given email and password.
+
 Browse Products: Explore different categories and products.
+
 Add to Cart: Select products and add them to your cart.
+
 Checkout: Proceed with checkout and payment.
 
 Contributing 🤝
