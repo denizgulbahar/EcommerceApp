@@ -35,6 +35,15 @@ An enterprise-level mobile e-commerce application built with **React Native** an
 | Figma              | Design and prototyping                       |
 
 ---
+## Presentation 
+![general (2)](https://github.com/user-attachments/assets/a5b0535d-45eb-43c0-aa82-0a1317df2b1e)
+ &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;
+![myAccount](https://github.com/user-attachments/assets/20a9ab8a-5216-4aff-a0ea-beacaff1c565)
+ 
+![cart](https://github.com/user-attachments/assets/af44038e-af02-44f1-b332-0213873affdc) 
+
+
+---
 
 ## Installation ⚙️
 
